@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+		<title>Login Page</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
+		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="login-styles.css" />
+		<link rel="icon" href="favicon.ico">
+    </head>
+    
+    <body>
+        <div class="login">
+            <h2>Login Form</h2>
+            <form action="/action_page.php" method="post">
+                <div class="container">
+                    <div class="form-login">
+                        <label for="email"><b>Email</b></label>
+                        <br>
+                        <input type="text" placeholder="Enter Email..." name="email" required>
+                    </div>
+                    <br>
+                    <div class="form-login">
+                        <label for="psw"><b>Password</b></label>
+                        <br>
+                        <input type="password" placeholder="Enter Password..." name="psw" required>
+                    </div>   
+                    <div class="button-submit">
+                        <button type="submit">Login</button>
+                    </div>
+                </div>
+            </form>
+            <nav>
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="homepage.html">Cancel</a></li>
+                    <li class="nav-item"><a href="register.html">Register New User</a></li>
+                    <li class="nav-item"><a href="ft-pass.html">Forgot password?</a></li>
+                    <!--<li class="nav-item"><a href="#">About</a></li>
+                    <li class="nav-item"><a href="#">Contact</a></li>-->
+                </ul>
+            </nav>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+}
+
+nav  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    color: white;
+    background-color: darkred;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+  
+.nav-item a {
+    padding: 0px 20px;
+    text-decoration: none;
+    color: white;
+  
+}
+
+.nav-item:hover {
+    background-color: aliceblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+}
+
+.nav-item:hover a {
+    color: black;
+}
+
+form {
+    padding-bottom: 40px;
+}
+
+form h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 40px;
+    text-align: left;
+    font-size: 40px;
+    color: goldenrod;
+}
+
+form a {
+    padding-top: 10px;
+    padding: 0px 20px;
+    background-color: darkred;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.shop-items {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.seat-selection {
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.seating {
+    padding-left: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.seats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.seat {
+    display: flex;
+    flex: 0 0 10%;
+    padding: 5px;
+    position: relative;
+}
+
+.seat label {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.5rem;
+    padding: 4px 0px;
+    background: goldenrod;
+    border-radius: 7px;
+    color: black;
+}
+
+.seat label:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0px 2px goldenrod;
+}
+
+.seat input {
+    position: absolute;
+}
+
+.seat input[type=checkbox]:checked + label {
+    background: grey;
+}
+
+.seat:nth-child(3) {
+    margin-right: 10%;
+}
+
+.age-select {
+    display: grid;
+    gap: 10px;
+    padding-bottom: 15px;
+}
+
+.group-age {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+}
+nav  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    color: white;
+    background-color: darkred;
+}
+
+form {
+    padding-bottom: 40px;
+}
+
+form h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 40px;
+    text-align: left;
+    font-size: 40px;
+    color: goldenrod;
+}
+
+form a {
+    padding-top: 10px;
+    padding: 0px 20px;
+    background-color: darkred;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+}
+.search-container {
+    float: inline-start;
+    margin: auto;
+    width: 50%;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container b {
+    font-size: 25px;
+    padding-right: 15px;
+}
+input[type=text], input[type=password] {
+    width: 75%;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline;
+    border: none;
+    background: #f1f1f1;
+}
+  
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+  
+.nav-item a {
+    padding: 0px 20px;
+    text-decoration: none;
+    color: white;
+  
+}
+
+.nav-item:hover {
+    background-color: aliceblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+}
+
+.nav-item:hover a {
+    color: black;
+}
+
+.banner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    background-color:black;
+}
+  
+.banner h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 3px 3px 4px goldenrod;
+    padding: 40px;
+    text-align: left;
+    font-size: 60px;
+    color: teal;
+}
+
+.buttons-manage {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: right;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    background-color:black;
+}
+
+.banner-button {
+    list-style: none;
+    display: flex;
+    padding: 10px;
+}
+  
+.banner-button a {
+    padding: 0px 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.banner-button:hover {
+    background-color: aliceblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+}
+
+.banner-button:hover a {
+    color: black;
+}
+  
+.tint-one {
+    text-align: center;
+    background-color: black;
+    color:white;
+    padding-top: 20px;
+}
+
+.now_play_grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.now_play_grid p {
+    display: grid;
+    padding: 20px;
+    gap: 10px;
+}
+
+.now_play_grid a {
+    padding: 0px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: darkred;
+    border-radius: 10px;
+}
+
+.now_play_grid a:hover {
+    background-color: aliceblue;
+    color:black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+}
+
+.now_play_grid .item-col h4 {
+    font-size: 20px;
+    padding-bottom: 0px;
+}
+  
+.button bookmovie {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: goldenrod;
+    padding: 15px;
+    font-size: 15px;
+    color: white;
+    align-items: center;
+    justify-content: center; 
+}
+
+.login {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    outline: 2px dashed crimson;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 5px;
+    width: 600px;
+    height: 400px;
+    box-shadow: 10px 10px lightblue;
+    background-color: lavender;
+    text-align: center;
+}
+
+footer {
+    padding-bottom: 20px;
+}
+  
+  /**************** create a verticle layout for mobile devices (smaller than 600px ).    *********/
+  @media all and (max-width: 600px) {
+    .now_play_grid {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .quad-col {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-links {
+      flex-direction: column;
+      text-align: center;
+      padding: 0px;
+    }
+  }

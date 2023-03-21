@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+		<title>Registration Page</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
+		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="register-styles.css" />
+		<link rel="icon" href="favicon.ico">
+    </head>
+
+    <body>
+        <div class="full-register">
+            <div class="opening">
+                <h1>Welcome, New User</h1>
+                <h4>Create a free account with Cinema E-Booking System to start booking movie tickets!</h4>
+            </div>
+            <div class="form-card">
+                <!--<img src="images/360_F_390772378_Y4Fle315sBrDvXWhXBzV7ijGHde3kAE9.jpg" width="auto" height="auto">-->
+                <form action="#">
+                    <div class="form-newUser">
+                        <label for="firstName" text-align="center"> First Name: </label>
+                        <br>
+                        <input type="text" name="firstName" id="firstName" required placeholder="Enter First Name...">
+                    </div>
+                    <div class="form-newUser">
+                        <label for="lastName"> Last Name: </label>
+                        <br>
+                        <input type="text" name="lastName" id="lastName" required placeholder="Enter Last Name...">
+                    </div>
+                    <div class="form-newUser">
+                        <label for="email"> Email: </label>
+                        <br>
+                        <input type="text" name="email" id="Email" required placeholder="Enter Email...">
+                    </div>
+                    <div class="form-newUser">
+                        <label for="psw">Password: </label>
+                        <br>
+                        <input type="password" name="psw" id="psw" required placeholder="Enter password...">
+                    </div>
+                    <div class="form-newUser">
+                        <label for="psw-confirm"> Confirm Password: </label>
+                        <br>
+                        <input type="password" name="psw-confirm" id="psw-confirm" required placeholder="Confirm Password...">
+                    </div>
+                    <div class="form-newUser">
+                        <label for="credit-card"> Credit card number: </label>
+                        <br>
+                        <input type="text" class="card-number" placeholder="Card Number">
+                    
+                        <!-- Date Field -->
+                        <h4>Date of Expiration:</h4>
+                        <div class="date-field">
+                            <div class="month">
+                                <select name="Month">
+                                <option value="january">January</option>
+                                <option value="february">February</option>
+                                <option value="march">March</option>
+                                <option value="april">April</option>
+                                <option value="may">May</option>
+                                <option value="june">June</option>
+                                <option value="july">July</option>
+                                <option value="august">August</option>
+                                <option value="september">September</option>
+                                <option value="october">October</option>
+                                <option value="november">November</option>
+                                <option value="december">December</option>
+                                </select>
+                            </div>
+                            <div class="year">
+                                <select name="Year">
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                <option value="2031">2031</option>
+                                <option value="2032">2032</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <!-- Card Verification Field -->
+                        <h4>Enter CVV Number: </h4>
+                        <div class="cvv-details">
+                            <p>3 or 4 digits usually found <br> on the signature strip</p>
+                        </div>
+                        <div class="card-verification">
+                        <div class="cvv-input">
+                            <input type="text" placeholder="CVV">
+                        </div>
+                        
+
+                    </div>
+                    <hr class="divisions">
+                    <div class="form-contact">
+                        <button type="button" button type="button" class="cancelbtn"><a href="homepage.html">Cancel</a></button>
+                        <button type="submit" button type="button" class="signupbtn">Sign Up</button>
+                        <!--<input type="submit" value="Submit">-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

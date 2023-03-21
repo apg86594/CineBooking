@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+    <head>
+		<meta charset="UTF-8"/>
+		<title>Home Page</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
+		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="profile-styles.css" />
+		<link rel="icon" href="favicon.ico">
+	</head>
+    <body>
+        <nav>
+            <h1>Cinema E-Booking System</h1>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="../homepage.html"><img src="../images/icons/home_icon.png" height="25px" width="25px"></a></li>
+            </ul>
+        </nav>
+        <div class="banner">
+            <h1>Profile Page</h1>
+        </div>
+        <div class="content-one">
+            <div class="col-one">
+                <div class="card-side">
+                    <div class="profile-body">
+                        <img src="../images/icons/profile-icon.png" width="100px" height="100px">
+                        <div class="user-bar">
+                            <h2>First-Name Last-Name</h2>
+                            <a href="../homepage.html">Home</a>
+                            <a href="#">Order History</a>
+                            <a href="edit-profile.html">Edit Profile</a>
+                            <a href="../homepage.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-one">
+                <div class="slide-two">
+                    <div class="buttons-manage">
+                        <div class="banner-button">
+                            <a href="edit-profile.html" button type="button" class="editbtn"><img src="../images/icons/edit-icon.png" width="20px" height="20px"></a>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <form action="#">
+                            <div class="content-one">
+                                <label for="fullName" text-align="center">Full Name: </label>
+                                <input type="text" name="fullName" id="fullName" required placeholder="Enter Full Name...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="email" text-align="center">Email: </label>
+                                <input type="text" name="email" id="email" required placeholder="Enter Email...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="phoneNum" text-align="center">Phone Number: </label>
+                                <input type="number" name="phoneNum" id="phoneNum" required placeholder="Phone Number (XXX)XXX-XXXX">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="creditCard" text-align="center">Credit Card</label>
+                            </div>
+                            <div class="content-one">
+                                <label for="ccNum" text-align="center">Credit Card Number: </label>
+                                <input type="text" name="ccNum" id="ccNum" required placeholder="XXXX-XXXX-XXXX-0000">
+                            </div>
+                            <div class="content-one">
+                                <label for="ccDOE" text-align="center">Date of Expiration</label>
+                            </div>
+                            <div class="content-one">
+                                <label for="ccMonth" text-align="center">Month: </label>
+                                <input type="number" name="monthExp" id="monthExp" required placeholder="DOE Month">
+                            </div>
+                            <div class="content-one">
+                                <label for="ccYear" text-align="center">Year: </label>
+                                <input type="number" name="yearExp" id="yearExp" required placeholder="DOE Year">
+                            </div>
+                            <div class="content-one">
+                                <label for="cvvNum" text-align="center">CVV: </label>
+                                <input type="number" name="cvvNum" id="cvvNum" required placeholder="CVV Num">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="shipAdd" text-align="center">Shipping Address</label>
+                            </div>
+                            <div class="content-one">
+                                <label for="streetAdd" text-align="center">Address Line 1: </label>
+                                <input type="text" name="streetAdd" id="streetAdd" required placeholder="Street Number and Street Name...">
+                            </div>
+                            <div class="content-one">
+                                <label for="streetAddMore" text-align="center">Address Line 2: </label>
+                                <input type="text" name="streetAddMore" id="streetAddMore" required placeholder="Building/Apartment Number/Suite no., Unit, Floor, etc. (Optional)">
+                            </div>
+                            <div class="content-one">
+                                <label for="cityAdd" text-align="center">City: </label>
+                                <input type="text" name="cityAdd" id="cityAdd" required placeholder="Enter City...">
+                            </div>
+                            <div class="content-one">
+                                <label for="stateAdd" text-align="center">State/Province: </label>
+                                <input type="text" name="stateAdd" id="stateAdd" required placeholder="Enter State/Province...">
+                            </div>
+                            <div class="content-one">
+                                <label for="zipAdd" text-align="center">Post/Zip Code: </label>
+                                <input type="text" name="zipAdd" id="zipAdd" required placeholder="Enter Zip Code...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="billAdd" text-align="center">Billing Address</label>
+                            </div>
+                            <div class="content-one">
+                                <input type="checkbox" name="sameAdd" id="sameAdd" value="SameAddress">
+                                <label for="sameAdd">Same as Shipping Address</label>
+                            </div>
+                            <div class="content-one">
+                                <label for="streetAdd" text-align="center">Address Line 1: </label>
+                                <input type="text" name="streetAdd" id="streetAdd" required placeholder="Street Number and Street Name...">
+                            </div>
+                            <div class="content-one">
+                                <label for="streetAddMore" text-align="center">Address Line 2: </label>
+                                <input type="text" name="streetAddMore" id="streetAddMore" required placeholder="Building/Apartment Number/Suite no., Unit, Floor, etc. (Optional)">
+                            </div>
+                            <div class="content-one">
+                                <label for="cityAdd" text-align="center">City: </label>
+                                <input type="text" name="cityAdd" id="cityAdd" required placeholder="Enter City...">
+                            </div>
+                            <div class="content-one">
+                                <label for="stateAdd" text-align="center">State/Province: </label>
+                                <input type="text" name="stateAdd" id="stateAdd" required placeholder="Enter State/Province...">
+                            </div>
+                            <div class="content-one">
+                                <label for="zipAdd" text-align="center">Post/Zip Code: </label>
+                                <input type="text" name="zipAdd" id="zipAdd" required placeholder="Enter Zip Code...">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="profile.html">Cancel Edits</a></li>
+                    </ul>
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="../homepage.html">Home</a></li>
+                    </ul>
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="profile.html">Save Edits</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </body>
+</html>
