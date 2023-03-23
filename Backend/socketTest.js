@@ -8,7 +8,8 @@ function runCode() {
       console.log("[open] Connection established");
       console.log("Sending to server");
       //socket.send("REGISTER,test123,charlie,skinner,email2,1,address,1111,123,10,11");
-      socket.send("LOGIN,email2,test123");
+      //socket.send("LOGIN,email2,test123");
+      socket.send("EDIT,test1234,charley,o'brien,email2,1,newaddress");
     };
     
     socket.onmessage = function(event) {

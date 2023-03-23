@@ -21,7 +21,7 @@ public class RequestHandler {
         } else if (command.equals("LOGIN")) {
             message = loginUser(inputs);
         } else if (command.equals("EDIT")) {
-            return "NOT IMPLEMENTED YET";
+            message = editUser(inputs);
         } else if (command.equals("CONFIRM")) {
             return "NOT IMPLEMENTED YET";
         }
@@ -102,7 +102,18 @@ public class RequestHandler {
                     String userType = results.getString("UserTypeName");
                     String email = results.getString("email");
                     String userID = results.getString("userID");
-                    return ("SUCCESS," + userType + "," + email + "," + userID);
+                    String password = encrypter.decrypt(results.getString("password"),secretKey);
+                    String firstName = results.getString("firstName");
+                    String lastName = results.getString("lastName");
+                    String billingAddress = results.getString("billingAddress");
+                    String ACTIVE = results.getString("ACTIVE");
+                    String cardnum = encrypter.decrypt(results.getString("cardnum"),secretKey);
+                    String securitynum = encrypter.decrypt(results.getString("securitynum"),secretKey);
+                    String expmonth = results.getString("expmonth");
+                    String expdate = results.getString("expdate");
+
+                    return ("SUCCESS," + userID + "," + password + "," + firstName + "," + lastName + "," + email +"," + userType + "," + 
+                    billingAddress + "," + ACTIVE + "," + cardnum + "," + securitynum + "," + expmonth + "," + expdate);
 
                 } else {
                     String findUserEmail = "select * from cinemabookingsystem.user where ? = email";
@@ -132,8 +143,8 @@ public class RequestHandler {
             results = findUserStmt.executeQuery();
             if(results.next()) { 
                 String userEmail = results.getString("email");
-                String sql = "UPDATE user SET password = ?, firstName=?, lastName=?, email=?, USERTYPE=?, billingAddress=?, ACTIVE)" +
-                    "WHERE email = " + userEmail;
+                String sql = "UPDATE user SET password = ?, firstName=?, lastName=?, email=?, USERTYPE=?, billingAddress=?, ACTIVE=?" +
+                    "WHERE email = ?";
                     PreparedStatement preparedStmt = connection.prepareStatement(sql);
             try {
                 preparedStmt.setString(1, inputs[1]);
@@ -143,6 +154,7 @@ public class RequestHandler {
                 preparedStmt.setString(5, inputs[5]);
                 preparedStmt.setString(6, inputs[6]);
                 preparedStmt.setString(7, "1");
+                preparedStmt.setString(8, userEmail);
                 preparedStmt.execute();
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
