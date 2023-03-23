@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.io.*;
 
 public class RequestHandler {
@@ -33,6 +34,8 @@ public class RequestHandler {
             String findDupUser = "select * from cinemabookingsystem.user where ? = email";
             PreparedStatement findDupUserStmt = connection.prepareStatement(findDupUser);
             encryptObject encrypter = new encryptObject();
+            Random r = new Random();
+            String randomNumber = String.format("%04d", 10000 + r.nextInt(9999));
             try {
                 findDupUserStmt.setString(1, inputs[4]);
                 results = findDupUserStmt.executeQuery();
@@ -53,7 +56,7 @@ public class RequestHandler {
                 preparedStmt.setString(5, inputs[5]); // Usertype
                 preparedStmt.setString(6, inputs[6]); // billingAddress
                 preparedStmt.setString(7, "0"); // active
-                preparedStmt.setString(8, "1234"); // confirm
+                preparedStmt.setString(8, randomNumber); // confirm
                 preparedStmt.setString(9, encrypter.encrypt(inputs[7],secretKey)); // cardnum
                 preparedStmt.setString(10, encrypter.encrypt(inputs[8], secretKey)); // securitynum
                 preparedStmt.setString(11, inputs[9]); // expmonth
