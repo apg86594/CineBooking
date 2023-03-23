@@ -11,6 +11,7 @@ public class RequestHandler {
     String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem";
     String username = "root";
     String password = "Test123";
+    final String secretKey = "ylwqc";
 
     public String handleRequest(String message) {
         String[] inputs = message.split(",", -2);
@@ -31,6 +32,7 @@ public class RequestHandler {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String findDupUser = "select * from cinemabookingsystem.user where ? = email";
             PreparedStatement findDupUserStmt = connection.prepareStatement(findDupUser);
+            encryptObject encrypter = new encryptObject();
             try {
                 findDupUserStmt.setString(1, inputs[4]);
                 results = findDupUserStmt.executeQuery();
@@ -40,17 +42,22 @@ public class RequestHandler {
             } catch (SQLException e) {
                 e.printStackTrace();
             } // try
-            String sql = "insert into user (password, firstName, lastName, email, USERTYPE, billingAddress, ACTIVE)" +
-                    "values (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into user (password, firstName, lastName, email, USERTYPE, billingAddress, ACTIVE, confirm, cardnum, securitynum, expmonth, expdate)" +
+                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(sql);
             try {
-                preparedStmt.setString(1, inputs[1]);
-                preparedStmt.setString(2, inputs[2]);
-                preparedStmt.setString(3, inputs[3]);
-                preparedStmt.setString(4, inputs[4]);
-                preparedStmt.setString(5, inputs[5]);
-                preparedStmt.setString(6, inputs[6]);
-                preparedStmt.setString(7, "0");
+                preparedStmt.setString(1, encrypter.encrypt(inputs[1],secretKey)); //password
+                preparedStmt.setString(2, inputs[2]); //first
+                preparedStmt.setString(3, inputs[3]); // last
+                preparedStmt.setString(4, inputs[4]); // email
+                preparedStmt.setString(5, inputs[5]); // Usertype
+                preparedStmt.setString(6, inputs[6]); // billingAddress
+                preparedStmt.setString(7, "0"); // active
+                preparedStmt.setString(8, "1234"); // confirm
+                preparedStmt.setString(9, encrypter.encrypt(inputs[7],secretKey)); // cardnum
+                preparedStmt.setString(10, encrypter.encrypt(inputs[8], secretKey)); // securitynum
+                preparedStmt.setString(11, inputs[9]); // expmonth
+                preparedStmt.setString(12, inputs[10]); // expdate
                 preparedStmt.execute();
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
@@ -68,9 +75,10 @@ public class RequestHandler {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String findUser = "select * from cinemabookingsystem.user where ? = email and ? = password";
             PreparedStatement findUserStmt = connection.prepareStatement(findUser);
+            encryptObject encrypter = new encryptObject();
             try {
                 findUserStmt.setString(1, inputs[1]);
-                findUserStmt.setString(2, inputs[2]);
+                findUserStmt.setString(2, encrypter.encrypt(inputs[2],secretKey));
                 results = findUserStmt.executeQuery();
                 if (results.next()) {
                     String activationStatus = results.getString("ACTIVE");
