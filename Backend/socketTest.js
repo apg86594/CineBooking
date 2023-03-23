@@ -9,7 +9,7 @@ function runCode() {
       console.log("Sending to server");
       //socket.send("REGISTER,test123,charlie,skinner,email2,1,address,1111,123,10,11");
       //socket.send("LOGIN,email2,test123");
-      socket.send("EDIT,test1234,charley,o'brien,email2,1,newaddress");
+      socket.send("EDIT,test12345,charleys,o'briens,email2,1,newaddress2,2222,122,9,10");
     };
     
     socket.onmessage = function(event) {

@@ -136,6 +136,7 @@ public class RequestHandler {
         return "BADUSER";
     }
     public String editUser(String[] inputs) { 
+        encryptObject encrypter = new encryptObject();
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String findUser = "select * from cinemabookingsystem.user where ? = email";
             PreparedStatement findUserStmt = connection.prepareStatement(findUser);
@@ -143,18 +144,22 @@ public class RequestHandler {
             results = findUserStmt.executeQuery();
             if(results.next()) { 
                 String userEmail = results.getString("email");
-                String sql = "UPDATE user SET password = ?, firstName=?, lastName=?, email=?, USERTYPE=?, billingAddress=?, ACTIVE=?" +
+                String sql = "UPDATE user SET password = ?, firstName=?, lastName=?, email=?, USERTYPE=?, billingAddress=?, ACTIVE=?, cardnum=?, securitynum=?, expmonth=?,expdate=?" +
                     "WHERE email = ?";
                     PreparedStatement preparedStmt = connection.prepareStatement(sql);
             try {
-                preparedStmt.setString(1, inputs[1]);
-                preparedStmt.setString(2, inputs[2]);
-                preparedStmt.setString(3, inputs[3]);
-                preparedStmt.setString(4, inputs[4]);
-                preparedStmt.setString(5, inputs[5]);
-                preparedStmt.setString(6, inputs[6]);
-                preparedStmt.setString(7, "1");
-                preparedStmt.setString(8, userEmail);
+                preparedStmt.setString(1, encrypter.encrypt(inputs[1],secretKey)); //password
+                preparedStmt.setString(2, inputs[2]); //firstName
+                preparedStmt.setString(3, inputs[3]); //lastName
+                preparedStmt.setString(4, inputs[4]); //email
+                preparedStmt.setString(5, inputs[5]); //usertype
+                preparedStmt.setString(6, inputs[6]); //billingaddress
+                preparedStmt.setString(7, "1"); //active
+                preparedStmt.setString(8, encrypter.encrypt(inputs[7],secretKey)); // cardnum
+                preparedStmt.setString(9, encrypter.encrypt(inputs[8],secretKey)); // securitynum
+                preparedStmt.setString(10,inputs[9]); // expmonth
+                preparedStmt.setString(11,inputs[10]); // expdate
+                preparedStmt.setString(12, userEmail);
                 preparedStmt.execute();
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
