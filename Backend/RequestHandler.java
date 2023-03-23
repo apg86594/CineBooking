@@ -100,9 +100,9 @@ public class RequestHandler {
                     PreparedStatement findPrivilegesStmt = connection.prepareStatement(findPrivileges);
 
                     findPrivilegesStmt.setString(1, privileges);
-                    results = findPrivilegesStmt.executeQuery();
-                    results.next();
-                    String userType = results.getString("UserTypeName");
+                    tempResults = findPrivilegesStmt.executeQuery();
+                    tempResults.next();
+                    String userType = tempResults.getString("UserTypeName");
                     String email = results.getString("email");
                     String userID = results.getString("userID");
                     String password = encrypter.decrypt(results.getString("password"),secretKey);
