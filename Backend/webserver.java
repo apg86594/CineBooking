@@ -13,14 +13,12 @@ public class webserver extends WebSocketServer {
     private Set<WebSocket> conns;
 
     private String request;
-    private String body;
     RequestHandler requestHandler = new RequestHandler();
 
     public webserver() {
         super(new InetSocketAddress("127.0.0.1",TCP_PORT));
         conns = new HashSet<>();
         String request = "";
-        String body = "";
     }
 
     public void setRequest(String newRequest) {
@@ -47,14 +45,8 @@ public class webserver extends WebSocketServer {
     @Override
     public void onMessage(WebSocket conn, String message) {
         System.out.println("Message from client: " + message);
-        if(request == "") {
-            setRequest(message);
-        } else if (body == "") {
-            setBody(message);
-        }
-        if (request != "" && body != "") {
-            message = requestHandler.handleRequest(message);
-        }
+        setRequest(message);
+        message = requestHandler.handleRequest(message);
 
     }
 

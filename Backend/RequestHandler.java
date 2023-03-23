@@ -13,7 +13,7 @@ public class RequestHandler{
         public String handleRequest(String message) {
             String[] inputs = message.split(",",-2);
             String command = inputs[0];
-            if(command == "REGISTER") {
+            if(command.equals("REGISTER")) {
                 message = registerUser(inputs);
             }
             return message;
@@ -21,9 +21,10 @@ public class RequestHandler{
 
         public String registerUser(String[] inputs) {
             try(Connection connection = DriverManager.getConnection(url, username, password)) {
+            System.out.println("You got in");
             Statement stmt = connection.createStatement();
-            String sql = "insert into user (password, firstName, lastName, email, USERTYPE, billingAddress)" + 
-            "values (?, ?, ?, ?, ?, ?)";
+            String sql = "insert into user (password, firstName, lastName, email, USERTYPE, billingAddress, ACTIVE)" + 
+            "values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(sql);
             try {
                 preparedStmt.setString(1, inputs[1]);
@@ -33,6 +34,7 @@ public class RequestHandler{
             preparedStmt.setString(4, inputs[4]);
             preparedStmt.setString(5, inputs[5]);
             preparedStmt.setString(6, inputs[6]);
+            preparedStmt.setString(7,"0");
             preparedStmt.execute();
             } catch (SQLException e) {
              // TODO Auto-generated catch block
