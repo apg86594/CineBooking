@@ -1,0 +1,14 @@
+{
+    "userID": "",
+    "password": "",
+    "firstName": "",
+    "lastName": "",
+    "email": "",
+    "userType": "",
+    "billingAddress": "",
+    "ACTIVE": "",
+    "cardnum": "",
+    "securitynum": "",
+    "expmonth": "",
+    "expdate": ""
+}

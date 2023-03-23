@@ -24,7 +24,7 @@ public class RequestHandler {
         } else if (command.equals("EDIT")) {
             message = editUser(inputs);
         } else if (command.equals("CONFIRM")) {
-            return "NOT IMPLEMENTED YET";
+            message = confirmation(inputs);
         }
         return message;
     } // handleRequest
@@ -183,15 +183,16 @@ public class RequestHandler {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String findUser = "select * from cinemabookingsystem.user where ? = email";
             PreparedStatement findUserStmt = connection.prepareStatement(findUser);
-            findUserStmt.setString(1, inputs[2]);
+            findUserStmt.setString(1, inputs[1]);
             results = findUserStmt.executeQuery();
             if(results.next()) { 
                 String confirmationCode = results.getString("confirm");
-                String sql = "UPDATE user SET ACTIVE = ?";
+                String sql = "UPDATE user SET ACTIVE = ? where ? = email";
                 PreparedStatement preparedStmt = connection.prepareStatement(sql);
                 if(confirmationCode.equals(inputs[2])) { 
                     try {
                         preparedStmt.setString(1, "1");
+                        preparedStmt.setString(2,inputs[1]);
                         preparedStmt.execute();
                     } catch (SQLException e) {
                         e.printStackTrace();
