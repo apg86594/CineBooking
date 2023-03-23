@@ -7,11 +7,13 @@ function runCode() {
     socket.onopen = function(e) {
       console.log("[open] Connection established");
       console.log("Sending to server");
-      socket.send("My name is John");
+      socket.send("LOGIN");
+      socket.send("col1,col2,col3,col4,col5");
     };
     
     socket.onmessage = function(event) {
       console.log(`[message] Data received from server: ${event.data}`);
+      socket.close();
     };
     
     socket.onclose = function(event) {
