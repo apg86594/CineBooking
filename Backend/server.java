@@ -3,6 +3,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.java_websocket.server.WebSocketServer;
+
 import java.sql.ResultSet;
 import java.io.*;
 import java.net.*;
@@ -15,21 +18,10 @@ class server {
         System.out.println("Connecting database...");
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             System.out.println("Database connected");
-            try (ServerSocket welcomeSocket = new ServerSocket(8000)) {
-                while(true) {
-                Socket connectionSocket = welcomeSocket.accept();
-                BufferedReader inFromClient = 
-                    new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
-                DataOutputStream outToClient =
-                    new DataOutputStream(connectionSocket.getOutputStream());
-                    String request = inFromClient.readLine();
-                    request= request.substring(request.indexOf('*') + 1, request.lastIndexOf('*'));
-                    System.out.println(request);
-                    outToClient.writeBytes("You did it! Request: " + request + '\n');
-                } // while
-            } catch (SocketException e) {
-                throw new IllegalStateException(e.getMessage());
-            }
+            while(true) {
+                 WebSocketServer socket = new webserver();
+                 socket.run();
+           } // while
            /*  Statement stmt = connection.createStatement();
             String sql = "insert into user (userID, password, firstName, lastName, email, USERTYPE, billingAddress)" + 
             "values (?, ?, ?, ?, ?, ?, ?)";
