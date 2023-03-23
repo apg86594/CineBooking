@@ -179,5 +179,37 @@ public class RequestHandler {
     return "Success";
     }
 
+    public String confirmation(String[] inputs) { 
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String findUser = "select * from cinemabookingsystem.user where ? = email";
+            PreparedStatement findUserStmt = connection.prepareStatement(findUser);
+            findUserStmt.setString(1, inputs[2]);
+            results = findUserStmt.executeQuery();
+            if(results.next()) { 
+                String confirmationCode = results.getString("confirm");
+                String sql = "UPDATE user SET ACTIVE = ?";
+                PreparedStatement preparedStmt = connection.prepareStatement(sql);
+                if(confirmationCode.equals(inputs[2])) { 
+                    try {
+                        preparedStmt.setString(1, "1");
+                        preparedStmt.execute();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        return "FAILURE";
+                    } 
+                    }
+                    else {
+                        System.out.println(" Failed to confirm");
+                        return "failure";
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return "FAILURE";
+            } 
+            return "success";
+    }
+
+
 } // RequestHandler
 
