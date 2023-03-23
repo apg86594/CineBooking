@@ -7,8 +7,8 @@ function runCode() {
     socket.onopen = function(e) {
       console.log("[open] Connection established");
       console.log("Sending to server");
-      socket.send("REGISTER,test123,charlie,skinner,email,1,address");
-;
+      //socket.send("REGISTER,test123,charlie,skinner,email2,1,address");
+      socket.send("LOGIN,email3,test1234");
     };
     
     socket.onmessage = function(event) {

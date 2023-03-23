@@ -25,15 +25,10 @@ public class webserver extends WebSocketServer {
         this.request = newRequest;
     }
 
-    public void setBody(String newBody) {
-        this.body = newBody;
-    }
-
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
         conns.add(conn);
         System.out.println("New connection from " + conn.getRemoteSocketAddress().getAddress().getHostAddress());
-        conn.send("You connected to me");
     }
 
     @Override
@@ -46,7 +41,8 @@ public class webserver extends WebSocketServer {
     public void onMessage(WebSocket conn, String message) {
         System.out.println("Message from client: " + message);
         setRequest(message);
-        message = requestHandler.handleRequest(message);
+        message = requestHandler.handleRequest(request);
+        conn.send(message);
 
     }
 
