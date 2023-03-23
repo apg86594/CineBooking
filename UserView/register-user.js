@@ -14,7 +14,7 @@ function register_user()
     const socket = new WebSocket("ws://127.0.0.1:8888");
 
     // Required fields for registering a user
-    const username      = document.getElementById("email".split("@"));
+    const username      = document.getElementById("email").split("@");
     const password      = document.getElementById("psw");
     const firstname     = document.getElementById("firstname");
     const lastname      = document.getElementById("lastname");
@@ -50,7 +50,7 @@ function register_user()
     };
       
     socket.onerror = function(error) {
-        console.log(`[ERROR]`);
+        console.log(`[ERROR]: ${error}`);
     };
 }
 
