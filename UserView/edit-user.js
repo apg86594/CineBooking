@@ -42,16 +42,20 @@ function edit_user(msg)
  */
 function compare_values()
 {
+    // Retrieves information from the JSON file
+    const json_data = fs.readFileSync("login-user-info.js");
+    const user_data = JSON.parse(json_data);
+
     // Grabbing existing elements to compare with changed elements
-    const firstname       = document.getElementById("full_name").split(" ")[0];
-    const lastname        = document.getElementById("full_name").split(" ")[1];
-    const phone           = document.getElementById("phone_num");
-    const card_num        = document.getElementById("card_num");
-    const card_month      = document.getElementById("card_month");
-    const card_year       = document.getElementById("card_year");
-    const card_cvv        = document.getElementById("cvv_num");
-    const shipping_addr   = document.getElementById("shipping_addr");
-    const billing_addr    = document.getElementById("billing_addr");
+    const firstname       = user_data.firstname;
+    const lastname        = user_data.lastname;
+    const phone           = document.getElementById("phone_num");       // !!!!! has no value to retrive from JSON
+    const card_num        = user_data.card_num;
+    const card_month      = user_data.month_exp;
+    const card_year       = user_data.year_exp;
+    const card_cvv        = user_data.cvv_num;
+    const shipping_addr   = document.getElementById("shipping_addr");   // !!!!! has no value to retrieve from JSON
+    const billing_addr    = user_data.billing_addr;
 
     // Grabs any elements that have changed
     const _firstname        = document2.getElementById("fullName").split(" ")[0];
@@ -79,7 +83,7 @@ function compare_values()
     
     // Comparison
     // format should be "EDIT,psw,fname,lname,ccnum,mExp,yExp,cvvnum,shipping_addr,billing_addr"
-    var results = "EDIT,same,"
+    var results = `EDIT,${user_data.password},`
     results += firstname != _firstname ? _firstname : firstname;
     results += ",";
     results += lastname  != _lastname ? _lastname : lastname;
