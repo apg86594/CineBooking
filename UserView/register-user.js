@@ -12,26 +12,32 @@ const document  = dom.window.document;
 function register_user()
 {
     const socket = new WebSocket("ws://127.0.0.1:8888");
-
+    console.log("YOU MADE IT HERE");
     // Required fields for registering a user
-    const username      = document.getElementById("email").split("@");
     const password      = document.getElementById("psw");
     const firstname     = document.getElementById("firstname");
     const lastname      = document.getElementById("lastname");
     const email         = document.getElementById("email");
-    const USERTYPE      = -1;
+    const USERTYPE      = 1;
     const billingZIP    = document.getElementById("billingZIP");
+    const cardnum       = document.getElementById("cardnum");
+    const cvv           = document.getElementById("cvv");
+    const month         = document.getElementById("month");
+    const year          = document.getElementById("year");
 
     socket.onopen = function(event) {
         console.log("Connected to server");
         socket.send(`REGISTER,
-                ${username},
                 ${password}, 
                 ${firstname}, 
                 ${lastname}, 
                 ${email}, 
                 ${USERTYPE}, 
-                ${billingZIP}`);
+                ${billingZIP},
+                ${cardnum},
+                ${cvv},
+                ${month},
+                ${year}`);
     };
 
     socket.onmessage = function(event) {
