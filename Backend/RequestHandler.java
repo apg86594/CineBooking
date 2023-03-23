@@ -114,4 +114,40 @@ public class RequestHandler {
         }
         return "BADUSER";
     }
+    public String editUser(String[] inputs) { 
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String findUser = "select * from cinemabookingsystem.user where ? = email";
+            PreparedStatement findUserStmt = connection.prepareStatement(findUser);
+            findUserStmt.setString(1, inputs[4]);
+            results = findUserStmt.executeQuery();
+            if(results.next()) { 
+                String userEmail = results.getString("email");
+                String sql = "UPDATE user SET password = ?, firstName=?, lastName=?, email=?, USERTYPE=?, billingAddress=?, ACTIVE)" +
+                    "WHERE email = " + userEmail;
+                    PreparedStatement preparedStmt = connection.prepareStatement(sql);
+            try {
+                preparedStmt.setString(1, inputs[1]);
+                preparedStmt.setString(2, inputs[2]);
+                preparedStmt.setString(3, inputs[3]);
+                preparedStmt.setString(4, inputs[4]);
+                preparedStmt.setString(5, inputs[5]);
+                preparedStmt.setString(6, inputs[6]);
+                preparedStmt.setString(7, "1");
+                preparedStmt.execute();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } // try
+            }
+            else 
+            System.out.println("failure");
+            connection.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return "FAILURE";
+    } 
+    return "Success";
+    }
+
 } // RequestHandler
+
