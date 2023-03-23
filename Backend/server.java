@@ -4,7 +4,7 @@ import java.io.*;
 
 
 class server {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         while(true) {
             WebSocketServer socket = new webserver();

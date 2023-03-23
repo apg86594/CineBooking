@@ -9,9 +9,9 @@ import java.io.*;
 
 public class RequestHandler {
     private ResultSet results;
-    String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem";
-    String username = "root";
-    String password = "Test123";
+    String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
+    String username = "root"; // set user name to local server username
+    String password = "Test123"; // set password to local server password
     final String secretKey = "ylwqc";
 
     public String handleRequest(String message) {

@@ -54,6 +54,7 @@ public class webserver extends WebSocketServer {
             // do some thing if required
         }
         System.out.println("ERROR from " + conn.getRemoteSocketAddress().getAddress().getHostAddress());
+        conn.close();
     }
 
     @Override
