@@ -100,7 +100,9 @@ public class RequestHandler {
                     results = findPrivilegesStmt.executeQuery();
                     results.next();
                     String userType = results.getString("UserTypeName");
-                    return ("SUCCESS," + userType);
+                    String email = results.getString("email");
+                    String userID = results.getString("userID");
+                    return ("SUCCESS," + userType + "," + email + "," + userID);
 
                 } else {
                     String findUserEmail = "select * from cinemabookingsystem.user where ? = email";
