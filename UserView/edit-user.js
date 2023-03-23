@@ -66,7 +66,7 @@ function compare_values()
     const _state            = document2.getElementById("stateAdd");
     const _zip              = document2.getElementById("zipAdd");
     const _shipping_addr    = _shipping_addr_1 + " " + _shipping_addr_2 + " " + _city + " " + _state + " " + _zip;
-    const _billing_addr     = "";
+    var   _billing_addr     = "";
     if (billing_addr == "Same as shipping address") {
         _billing_addr = shipping_addr;
     } else {
