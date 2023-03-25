@@ -8,9 +8,11 @@ function runCode() {
       console.log("[open] Connection established");
       console.log("Sending to server");
       //socket.send("REGISTER,test123,charlie,skinner,test@email.com,1,address,1111,123,10,11");
-      socket.send("LOGIN,test@email.com,test12345");
+      //socket.send("LOGIN,test@email.com,test12345");
       //socket.send("EDIT,test12345,charleys,o'briens,test@email.com,1,newaddress2,2222,122,9,10");
       //socket.send("CONFIRM,test@email.com,19328");
+      socket.send("ADDMOVIE,tt1234567,casting,genre, producer, duration, trailPic, trailVid, 3, 2, 1");
+      
     };
     
     socket.onmessage = function(event) {
