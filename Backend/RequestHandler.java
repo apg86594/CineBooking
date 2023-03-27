@@ -218,8 +218,7 @@ public class RequestHandler {
 
     public String scheduleMovie(String[] inputs) {
 
-
-        String timeStamp; 
+        //String timeStamp; 
 
         //connects to the database
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
@@ -240,7 +239,7 @@ public class RequestHandler {
                 return "BADSHOWID";
             } else {
 
-                timeStamp = results.getString("timeStamp");
+               // timeStamp = results.getString("timeStamp");
             }
 
 
@@ -287,8 +286,8 @@ public class RequestHandler {
                 preparedStmt.setString(2, inputs[2]); //movieID
                 preparedStmt.setString(3, inputs[3]); //auditoriumID
                 preparedStmt.setString(4, inputs[4]); //availableSeats
-                preparedStmt.setString(5, timeStamp); //showStart
-                preparedStmt.setString(6, inputs[5]); //timeFilled
+                preparedStmt.setString(5, inputs[5].str_to_date()); //showStart
+                preparedStmt.setString(6, inputs[6]); //timeFilled
 
                 //executes the sql statement
                 preparedStmt.execute();

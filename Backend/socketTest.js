@@ -11,7 +11,7 @@ function runCode() {
       //socket.send("LOGIN,test@email.com,test12345");
       //socket.send("EDIT,test12345,charleys,o'briens,test@email.com,1,newaddress2,2222,122,9,10");
       //socket.send("CONFIRM,test@email.com,19328");
-      socket.send("SCHEDULE,1,2,1,35,1")
+      socket.send("SCHEDULE,1,2,1,35,00:00:00,1")
     };
     
     socket.onmessage = function(event) {
