@@ -13,8 +13,9 @@ public class RequestHandler {
     String username = "root"; // set user name to local server username
     String password = "Test123"; // set password to local server password
     final String secretKey = "ylwqc";
+    SendEmail email = new SendEmail();
 
-    public String handleRequest(String message) {
+    public String handleRequest(String message) throws IOException {
         String[] inputs = message.split(",", -2);
         String command = inputs[0];
         if (command.equals("REGISTER")) {
@@ -29,7 +30,7 @@ public class RequestHandler {
         return message;
     } // handleRequest
 
-    public String registerUser(String[] inputs) {
+    public String registerUser(String[] inputs) throws IOException {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String findDupUser = "select * from cinemabookingsystem.user where ? = email";
             PreparedStatement findDupUserStmt = connection.prepareStatement(findDupUser);
@@ -66,6 +67,7 @@ public class RequestHandler {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } // try
+            //email.sendEmail(inputs[4],randomNumber);
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
