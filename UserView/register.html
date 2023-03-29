@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
 		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="register-styles.css" />
+        <script src="register-user.js"></script>
 		<link rel="icon" href="favicon.ico">
     </head>
 
@@ -49,13 +50,13 @@
                     <div class="form-newUser">
                         <label for="credit-card"> Credit card number: </label>
                         <br>
-                        <input type="text" class="card-number" placeholder="Card Number">
+                        <input type="text" class="card-number" id="cardnum" placeholder="Card Number">
                     
                         <!-- Date Field -->
                         <h4>Date of Expiration:</h4>
                         <div class="date-field">
                             <div class="month">
-                                <select name="Month">
+                                <select name="Month" id="Month">
                                 <option value="january">January</option>
                                 <option value="february">February</option>
                                 <option value="march">March</option>
@@ -71,7 +72,7 @@
                                 </select>
                             </div>
                             <div class="year">
-                                <select name="Year">
+                                <select name="Year" id="Year">
                                 <option value="2023">2023</option>
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
@@ -93,7 +94,7 @@
                         </div>
                         <div class="card-verification">
                         <div class="cvv-input">
-                            <input type="text" placeholder="CVV">
+                            <input type="text" id="cvv" placeholder="CVV">
                         </div>
                     </div>
                     <div class="form-newUser">
@@ -104,7 +105,7 @@
                     <hr class="divisions">
                     <div class="form-contact">
                         <button type="button" button type="button" class="cancelbtn"><a href="homepage.html">Cancel</a></button>
-                        <button type="submit" button type="button" class="signupbtn">Sign Up</button>
+                        <button type="submit" button type="button" class="signupbtn" id="signupbtn">Sign Up</button>
                         <!--<input type="submit" value="Submit">-->
                     </div>
                 </form>
