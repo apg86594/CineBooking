@@ -29,8 +29,10 @@ function loginUser()
 
     socket.onmessage = (event) => {
         var message = event.data;
-        console.log("Message received from server:", message);
-        if (message.split(",")[0] === "SUCCESS") {
+        console.log("Message received from server:", message); // debug
+        if (message.split(",")[0] !== "SUCCESS") {
+            handleLoginError(message);
+        } else {
             const user_data = {
                 userID:         message.split(",")[1],
                 password:       message.split(",")[2],
@@ -61,6 +63,25 @@ function loginUser()
     socket.addEventListener("error", (event) => {
         console.error("WebSocket connection error:", event);
     });
+}
+
+/*
+ * Handles login errors.
+ */
+function handleLoginError(message)
+{
+    switch (message)
+    {
+        case "BADUSER":
+            // user does not exist, handle here
+            break;
+        case "BADPASSWORD":
+            // notify user of incorrect password
+            break;
+        case "NOTACTIVE":
+            // notify user to confirm registration first
+            break;
+    }
 }
 
 window.onload = initialize;
