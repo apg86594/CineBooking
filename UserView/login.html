@@ -9,13 +9,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
 		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="login-styles.css" />
+        <script src="login-user.js"></script>
 		<link rel="icon" href="favicon.ico">
     </head>
     
     <body>
         <div class="login">
             <h2>Login Form</h2>
-            <form action="/action_page.php" method="post">
+            <form action="#">
                 <div class="container">
                     <div class="form-login">
                         <label for="email"><b>Email</b></label>
@@ -29,7 +30,7 @@
                         <input type="password" id="psw_login" placeholder="Enter Password..." name="psw" required>
                     </div>   
                     <div class="button-submit">
-                        <button type="submit">Login</button>
+                        <button type="button" id="loginbtn"">Login</button>
                     </div>
                 </div>
             </form>
