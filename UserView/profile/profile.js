@@ -1,5 +1,10 @@
 /* Script for profile.html */
 
+/*
+ * Called when the webpage is loaded. Retrieves user's
+ * information from login-user-info.json and passes that
+ * information to displayInfo.
+ */
 function initialize()
 {
     fetch("../login-user-info.json")
@@ -7,6 +12,10 @@ function initialize()
         .then(data => displayInfo(data));
 }
 
+/*
+ * Checks if user has valid displayable data. If so, display.
+ * Else, leave as default.
+ */
 function displayInfo(user_data)
 {   
     // Display user's full name
@@ -55,6 +64,10 @@ function displayInfo(user_data)
     }
 }
 
+/*
+ * Converts the integer representation of the month
+ * to its string value.
+ */
 function convertMonthToString(month)
 {
     switch (month)
