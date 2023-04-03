@@ -45,10 +45,27 @@ function registerUser()
         
     socket.addEventListener("message", (event) => {
         console.log("Message received from server:", event.data);
-        if (event.data === "SUCCESS") { 
+
+        // Registration success
+        if (event.data === "SUCCESS") {
             window.location.href = "register_suc.html";
-            socket.close();
+        
+        // Registration failure
+        } else if (event.data === "FAILURE") {
+            console.log("Registration failed. Try again.");
+
+        // User already exists
+        } else if (event.data === "User already exists") {
+            const errorElem = document.getElementById("error-message");
+            errorElem.innerHTML = "User already exists. Click the button below to go to the login page.";
+            const loginBtn = document.createElement("button");
+            loginBtn.innerHTML = "Go to login page";
+            loginBtn.addEventListener("click", () => {
+                window.location.href = "login.html";
+            });
+            errorElem.appendChild(loginBtn);
         }
+        socket.close();    
     });
         
     socket.addEventListener("close", (event) => {

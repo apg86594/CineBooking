@@ -166,6 +166,26 @@ nav  {
     text-decoration: none;
 }
 
+#error-message {
+    margin-top: 1rem; /* Add a margin to separate from the registration form */
+    text-align: center; /* Center the error message and button */
+}
+
+#error-message button {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: darkred;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+
 /* Change styles for span and cancel button on extra small screens */
 @media all and (max-width: 600px) {
     .login {
