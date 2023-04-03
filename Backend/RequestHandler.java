@@ -63,6 +63,8 @@ public class RequestHandler {
                 preparedStmt.setString(11, inputs[9]); // expmonth
                 preparedStmt.setString(12, inputs[10]); // expdate
                 preparedStmt.execute();
+                SendEmail sendConfirmation = new SendEmail();
+                sendConfirmation.sendEmail(inputs[4], (String)randomNumber);
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
