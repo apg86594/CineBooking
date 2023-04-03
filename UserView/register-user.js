@@ -11,8 +11,11 @@ function initialize()
     socket = new WebSocket("ws://127.0.0.1:8888");
     socket.onopen = () => {
         console.log("Connection to server established.");
-        var button = document.getElementById("signupbtn");
-        button.addEventListener("click", registerUser);
+        const button = document.getElementById("signupbtn");
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+            registerUser();
+        });
     }
 }
 
@@ -43,11 +46,7 @@ function registerUser()
     socket.addEventListener("message", (event) => {
         console.log("Message received from server:", event.data);
         if (event.data === "SUCCESS") { 
-
-            /*** NEED TO REDIRECT TO register_suc.html HERE */
-
-            //window.location.href = "CineBooking/UserView/register_suc.html";
-
+            window.location.href = "register_suc.html";
             socket.close();
         }
     });
