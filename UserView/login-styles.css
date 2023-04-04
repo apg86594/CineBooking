@@ -125,6 +125,21 @@ span.psw {
   padding-top: 16px;
 }
 
+#error-message {
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#error-message button {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: darkred;
+    border-radius: 10px;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media all and (max-width: 600px) {
     .login {
