@@ -4,11 +4,11 @@ import com.sendgrid.*;
 import java.io.IOException;
 
 public class SendEmail {
-    public static void main(String[] args) throws IOException {
+    public void sendEmail(String email, String confirmationCode) throws IOException {
         Email from = new Email("cinemabookingB2@gmail.com");
-        String subject = "Sending with SendGrid is Fun";
-        Email to = new Email("chuckskined@gmail.com");
-        Content content = new Content("text/plain", "and easy to do anywhere, even with Java");
+        String subject = "Confirmation Code";
+        Email to = new Email(email);
+        Content content = new Content("text/plain", "Your confirmation code is: " + confirmationCode);
         Mail mail = new Mail(from, subject, to, content);
     
         SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
