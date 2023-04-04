@@ -112,4 +112,4 @@ function convertMonthToString(month)
     return month;
 }
 
-window.onload = () => { initialize(); }
+window.onload = initialize;
