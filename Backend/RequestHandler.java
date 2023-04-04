@@ -11,7 +11,7 @@ public class RequestHandler {
     private ResultSet results;
     String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
     String username = "root"; // set user name to local server username
-    String password = "Mala0905hello"; // set password to local server password
+    String password = "Test123"; // set password to local server password
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 
@@ -26,6 +26,10 @@ public class RequestHandler {
             message = editUser(inputs);
         } else if (command.equals("CONFIRM")) {
             message = confirmation(inputs);
+        } else if (command.equals("REQUESTFORGOTPW")) {
+            message = requestForgotPW(inputs);
+        } else if (command.equals("SUBMITFORGOTPW")) {
+            message = "NOT IMPLEMENTED";
         }
         return message;
     } // handleRequest
@@ -214,6 +218,25 @@ public class RequestHandler {
                 return "FAILURE";
             } 
             return "success";
+    }
+
+    public String requestForgotPW(String[] inputs) {
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        Random r = new Random();
+        String randomNumber = String.format("%04d", 10000 + r.nextInt(9999));
+        String updateUser = "UPDATE user SET confirm = ? WHERE ? = email";
+        PreparedStatement updateUserStmt = connection.prepareStatement(updateUser);
+        updateUserStmt.setString(1, randomNumber); // confirm
+        updateUserStmt.setString(2, inputs[1]); //email
+        updateUserStmt.execute();
+        SendEmail sendConfirmation = new SendEmail();
+        sendConfirmation.sendEmail(inputs[1], (String)randomNumber);
+        
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+            return "FAILURE";
+        }//try
+        return "success";
     }
 
 
