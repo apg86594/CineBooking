@@ -32,14 +32,23 @@ function loginUser()
 
     socket.onmessage = (event) => {
         console.log("Message received from server:", event.data);
-        if (event.data.split(",")[0] !== "SUCCESS")
+
+        // If login failed, handle server error message
+        if (event.data.split(",")[0] !== "SUCCESS") {
             handleLoginError(event.data);
 
-        // Redirects admins to the admin-home.html page
-        if (event.data.split(",")[6] === "ADMIN") {
-            window.location.href = "admin/admin-home.html";
+        // Else, login was successful
+        // For testing, remove else statement to bypass "NOTACTIVE" status
         } else {
-            window.location.href = "homepage.html"
+
+            // Redirects admins to the admin-home.html page
+            if (event.data.split(",")[6] === "ADMIN") {
+                window.location.href = "admin/admin-home.html";
+
+            // Otherwise, direct user to default homepage
+            } else {
+                window.location.href = "homepage.html"
+            }
         }
         
         socket.close();
@@ -85,7 +94,7 @@ function handleLoginError(message)
         // User has not confirmed account via email confirmation
         case "NOTACTIVE":
             const _errorElem = document.getElementById("error-message");
-            _errorElem.innerHTML = "Please confirm registration before logging in.\nCheck email.";
+            _errorElem.innerHTML = "Please confirm registration before logging in. Check your email for a confirmation code.";
             break;
     }
 }
