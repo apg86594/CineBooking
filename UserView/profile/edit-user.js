@@ -70,7 +70,6 @@ function editUser(user_data)
     results += card_month != _card_month && _card_month !== "" ? _card_month : card_month;
     results += ",";
     results += card_year != _card_year && _card_year !== "" ? _card_year : card_year;
-    results += ",";
 
     const message = results;
 
