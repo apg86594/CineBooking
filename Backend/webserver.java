@@ -2,6 +2,7 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.HashSet;
 import java.util.Set;
@@ -41,7 +42,12 @@ public class webserver extends WebSocketServer {
     public void onMessage(WebSocket conn, String message) {
         System.out.println("Message from client: " + message);
         setRequest(message);
-        message = requestHandler.handleRequest(request);
+        try {
+            message = requestHandler.handleRequest(request);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         conn.send(message);
 
     }

@@ -1,12 +1,20 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "Backend/mysql-connector-j-8.0.32.jar",
-        "c:\\Users\\chuck\\Downloads\\TooTallNate-Java-WebSocket-v1.5.3-15-g30ba037\\TooTallNate-Java-WebSocket-30ba037\\src\\main\\java/**/*.jar",
-        "Backend/Java-WebSocket-1.5.3.jar",
-        "Backend/slf4j-api-2.0.7.jar",
-        "Backend/mail.jar",
-        "Backend/activation.jar",
-        "Backend/smtp-1.6.2.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "Backend/mysql-connector-j-8.0.32.jar",
+            "c:\\Users\\chuck\\Downloads\\TooTallNate-Java-WebSocket-v1.5.3-15-g30ba037\\TooTallNate-Java-WebSocket-30ba037\\src\\main\\java/**/*.jar",
+            "Backend/Java-WebSocket-1.5.3.jar",
+            "Backend/slf4j-api-2.0.7.jar",
+            "Backend/mail.jar",
+            "Backend/activation.jar",
+            "Backend/smtp-1.6.2.jar",
+            "Backend/sendgrid-java.jar",
+            "Backend/sendgrid-java-4.9.3.jar",
+            "Backend/json-simple-1.1.jar"
+        ],
+        "exclude": [
+            "Backend/sendgrid-java-4.0.1.jar"
+        ]
+    }
 }

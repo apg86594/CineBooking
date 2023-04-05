@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
 import java.io.*;
+import org.json.simple.JSONObject;
 
 public class RequestHandler {
     private ResultSet results;
@@ -13,8 +14,9 @@ public class RequestHandler {
     String username = "root"; // set user name to local server username
     String password = "Test123"; // set password to local server password
     final String secretKey = "ylwqc";
+    SendEmail email = new SendEmail();
 
-    public String handleRequest(String message) {
+    public String handleRequest(String message) throws IOException {
         String[] inputs = message.split(",", -2);
         String command = inputs[0];
         if (command.equals("REGISTER")) {
@@ -25,11 +27,17 @@ public class RequestHandler {
             message = editUser(inputs);
         } else if (command.equals("CONFIRM")) {
             message = confirmation(inputs);
+        } else if (command.equals("REQUESTFORGOTPW")) {
+            message = requestForgotPW(inputs);
+        } else if (command.equals("SUBMITFORGOTPW")) {
+            message = submitForgotPW(inputs);
+        } else if (command.equals("LOGOUT")) {
+            message = logout();
         }
         return message;
     } // handleRequest
 
-    public String registerUser(String[] inputs) {
+    public String registerUser(String[] inputs) throws IOException {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String findDupUser = "select * from cinemabookingsystem.user where ? = email";
             PreparedStatement findDupUserStmt = connection.prepareStatement(findDupUser);
@@ -62,10 +70,13 @@ public class RequestHandler {
                 preparedStmt.setString(11, inputs[9]); // expmonth
                 preparedStmt.setString(12, inputs[10]); // expdate
                 preparedStmt.execute();
+                SendEmail sendConfirmation = new SendEmail();
+                sendConfirmation.sendEmail(inputs[4], (String)randomNumber);
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } // try
+            //email.sendEmail(inputs[4],randomNumber);
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -114,7 +125,22 @@ public class RequestHandler {
                     String securitynum = encrypter.decrypt(results.getString("securitynum"),secretKey);
                     String expmonth = results.getString("expmonth");
                     String expdate = results.getString("expdate");
-
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("userID",userID);
+                    jsonObject.put("password",password);
+                    jsonObject.put("firstName",firstName);
+                    jsonObject.put("lastName",lastName);
+                    jsonObject.put("email",email);
+                    jsonObject.put("userType",userType);
+                    jsonObject.put("billingAddress",billingAddress);
+                    jsonObject.put("ACTIVE",ACTIVE);
+                    jsonObject.put("cardnum",cardnum);
+                    jsonObject.put("securitynum",securitynum);
+                    jsonObject.put("expmonth",expmonth);
+                    jsonObject.put("expdate",expdate);
+                    FileWriter file = new FileWriter("./UserView/login-user-info.json");
+                    file.write(jsonObject.toJSONString());
+                    file.close();
                     return ("SUCCESS," + userID + "," + password + "," + firstName + "," + lastName + "," + email +"," + userType + "," + 
                     billingAddress + "," + ACTIVE + "," + cardnum + "," + securitynum + "," + expmonth + "," + expdate);
 
@@ -129,7 +155,7 @@ public class RequestHandler {
                     }
 
                 }
-            } catch (SQLException e) {
+            } catch (SQLException | IOException e) {
                 e.printStackTrace();
             } // try
             connection.close();
@@ -137,6 +163,34 @@ public class RequestHandler {
             e.printStackTrace();
         }
         return "BADUSER";
+    }
+
+    public String logout() {
+        JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("userID","");
+                    jsonObject.put("password","");
+                    jsonObject.put("firstName","");
+                    jsonObject.put("lastName","");
+                    jsonObject.put("email","");
+                    jsonObject.put("userType","");
+                    jsonObject.put("billingAddress", "");
+                    jsonObject.put("ACTIVE", "");
+                    jsonObject.put("cardnum", "");
+                    jsonObject.put("securitynum", "");
+                    jsonObject.put("expmonth", "");
+                    jsonObject.put("expdate", "");
+                    FileWriter file;
+                    try {
+                        file = new FileWriter("./UserView/login-user-info.json");
+                        file.write(jsonObject.toJSONString());
+                        file.close();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        return "FAILURE";
+                    }
+                    return "SUCCESS";
+                    
     }
     public String editUser(String[] inputs) { 
         encryptObject encrypter = new encryptObject();
@@ -204,11 +258,64 @@ public class RequestHandler {
                         return "failure";
                     }
                 }
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
                 return "FAILURE";
             } 
             return "success";
+    }
+
+    public String requestForgotPW(String[] inputs) {
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        Random r = new Random();
+        String randomNumber = String.format("%04d", 10000 + r.nextInt(9999));
+        String updateUser = "UPDATE user SET confirm = ? WHERE ? = email";
+        PreparedStatement updateUserStmt = connection.prepareStatement(updateUser);
+        updateUserStmt.setString(1, randomNumber); // confirm
+        updateUserStmt.setString(2, inputs[1]); //email
+        updateUserStmt.execute();
+        SendEmail sendConfirmation = new SendEmail();
+        sendConfirmation.sendEmail(inputs[1], (String)randomNumber);
+        connection.close();
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+            return "FAILURE";
+        }//try
+        return "success";
+    }
+
+    public String submitForgotPW(String[] inputs) {
+        encryptObject encrypter = new encryptObject();
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String findUser = "select * from cinemabookingsystem.user where ? = email";
+            PreparedStatement findUserStmt = connection.prepareStatement(findUser);
+            findUserStmt.setString(1, inputs[1]); // email
+            results = findUserStmt.executeQuery();
+            if(results.next()) { 
+                String confirmationCode = results.getString("confirm");
+                String sql = "UPDATE user SET password = ? where ? = email";
+                PreparedStatement preparedStmt = connection.prepareStatement(sql);
+                if(confirmationCode.equals(inputs[3])) { 
+                    try {
+                        preparedStmt.setString(1, encrypter.encrypt(inputs[2],secretKey)); // password
+                        preparedStmt.setString(2,inputs[1]); // email
+                        preparedStmt.execute();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        return "FAILURE";
+                    } 
+                    }
+                    else {
+                        System.out.println("BADCODE");
+                        return "BADCODE";
+                    }
+                }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "FAILURE";
+        }
+        return "success";
     }
 
 
