@@ -10,7 +10,8 @@
             "Backend/activation.jar",
             "Backend/smtp-1.6.2.jar",
             "Backend/sendgrid-java.jar",
-            "Backend/sendgrid-java-4.9.3.jar"
+            "Backend/sendgrid-java-4.9.3.jar",
+            "Backend/json-simple-1.1.jar"
         ],
         "exclude": [
             "Backend/sendgrid-java-4.0.1.jar"

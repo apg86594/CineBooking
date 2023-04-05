@@ -1,14 +1,1 @@
-{
-    "userID": "",
-    "password": "",
-    "firstName": "",
-    "lastName": "",
-    "email": "",
-    "userType": "",
-    "billingAddress": "",
-    "ACTIVE": "",
-    "cardnum": "",
-    "securitynum": "",
-    "expmonth": "",
-    "expdate": ""
-}
+{"firstName":"","lastName":"","password":"","cardnum":"","securitynum":"","ACTIVE":"","expmonth":"","userType":"","billingAddress":"","userID":"","email":"","expdate":""}
