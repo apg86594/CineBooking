@@ -14,7 +14,7 @@ function runCode() {
       //socket.send("ADDMOVIE,tt1234567,casting,genre, producer, duration, trailPic, trailVid, 3, 2, 1");
       //socket.send("REQUESTFORGOTPW,testing");
       //socket.send("SUBMITFORGOTPW,chuckskined@gmail.com,newPW123,19631");
-      socket.send("LOGOUT");
+      //socket.send("LOGOUT");
       
     };
     
