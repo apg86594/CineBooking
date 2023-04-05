@@ -12,7 +12,10 @@ function initialize()
     socket.onopen = () => {
         console.log("Connection to server established.");
         var button = document.getElementById("loginbtn");
-        button.addEventListener("click", loginUser);
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+            loginUser();
+        });
     }
 }
 
@@ -28,31 +31,26 @@ function loginUser()
     socket.send(message);
 
     socket.onmessage = (event) => {
-        var message = event.data;
-        console.log("Message received from server:", message); // debug
-        if (message.split(",")[0] !== "SUCCESS") {
-            handleLoginError(message);
+        console.log("Message received from server:", event.data);
+
+        // If login failed, handle server error message
+        if (event.data.split(",")[0] !== "SUCCESS") {
+            handleLoginError(event.data);
+
+        // Else, login was successful
+        // For testing, remove else statement to bypass "NOTACTIVE" status
         } else {
-            const user_data = {
-                userID:         message.split(",")[1],
-                password:       message.split(",")[2],
-                firstName:      message.split(",")[3],
-                lastName:       message.split(",")[4],
-                email:          message.split(",")[5],
-                userType:       message.split(",")[6],
-                billingAddress: message.split(",")[7],
-                ACTIVE:         message.split(",")[8],
-                cardnum:        message.split(",")[9],
-                securitynum:    message.split(",")[10],
-                expmonth:       message.split(",")[11],
-                expdate:        message.split(",")[12]
+
+            // Redirects admins to the admin-home.html page
+            if (event.data.split(",")[6] === "ADMIN") {
+                window.location.href = "admin/admin-home.html";
+
+            // Otherwise, direct user to default homepage
+            } else {
+                window.location.href = "homepage.html"
             }
-            const json_data = JSON.stringify(user_data);
-            fs.writeFile("login-user-info.json", json_data, (err) => {
-                if (err) throw err;
-                console.log("Data written to file.");
-            });
         }
+        
         socket.close();
     }
 
@@ -72,14 +70,31 @@ function handleLoginError(message)
 {
     switch (message)
     {
+        // User does not exist; therefore offer option to register
         case "BADUSER":
-            // user does not exist, handle here
+            const errorElem = document.getElementById("error-message");
+            errorElem.innerHTML = "User does not exist. Click the button to go to the registration page.";
+            const registerBtn = document.createElement("button");
+            registerBtn.innerHTML = "Go to registration page";
+            registerBtn.addEventListener("click", () => {
+                window.location.href = "register.html";
+            });
+            errorElem.appendChild(registerBtn);
             break;
+
+        // User exists but used incorrect password
         case "BADPASSWORD":
-            // notify user of incorrect password
+            const pswbox = document.getElementById("psw_login");
+            pswbox.setAttribute("placeholder", "Incorrect password");
+            pswbox.value = "";
+            pswbox.style.borderColor = "red";
+            pswbox.style.borderWidth = "2px";
             break;
+
+        // User has not confirmed account via email confirmation
         case "NOTACTIVE":
-            // notify user to confirm registration first
+            const _errorElem = document.getElementById("error-message");
+            _errorElem.innerHTML = "Please confirm registration before logging in. Check your email for a confirmation code.";
             break;
     }
 }
