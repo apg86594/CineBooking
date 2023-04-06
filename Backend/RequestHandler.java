@@ -36,6 +36,15 @@ public class RequestHandler {
         } else if (command.equals("ADDMOVIE")) {
             addMovie add = new addMovie();
             message = add.addMovieEx(inputs, connection);
+        } else if (command.equals("SEARCHGENRE")) {
+            searchByGenre genreSearch = new searchByGenre();
+            message = genreSearch.searchByGenreEx(inputs, connection);
+        } else if (command.equals("SEARCHINPUT")) {
+            searchByInput inputSearch = new searchByInput();
+            message = inputSearch.searchByInputExString(inputs, connection);
+        } else if (command.equals("GETSHOWTIMES")) {
+            viewTimes viewTimes = new viewTimes();
+            message = viewTimes.timeAndPlace(inputs,connection);
         }
         return message;
     } // handleRequest
