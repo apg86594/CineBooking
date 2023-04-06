@@ -12,7 +12,8 @@ function initialize()
     socket.onopen = () => {
         console.log("Connection to server established.");
         var button = document.getElementById("save_btn");
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
             console.log("Clicked!");
             fetch("../login-user-info.json")
                 .then(response => response.json())
@@ -30,46 +31,87 @@ function initialize()
 function editUser(user_data)
 {
 
-    // Grabbing existing elements to compare with changed elements
-    const firstname       = user_data.firstName;
-    const lastname        = user_data.lastName;
-    const card_num        = user_data.cardnum;
-    const card_month      = user_data.expmonth;
-    const card_year       = user_data.expdate;
-    const card_cvv        = user_data.securitynum;
-    const billing_addr    = user_data.billingAddress;
+    // Grabs any elements that may have changed
+    const fullname      = document.getElementById("fullName").value.toString().split(" ");
+    const firstname     = fullname[0];
+    const lastname      = fullname[1];
+    const cardnum       = document.getElementById("ccNum").value;
+    const expmonth      = document.getElementById("monthExp").value;
+    const expdate       = document.getElementById("yearExp").value;
+    const cvv           = document.getElementById("cvvNum").value;
+    const shippingAddr1 = document.getElementById("streetAdd").value;
+    const shippingAddr2 = document.getElementById("streetAddMore").value;
+    const shippingZIP   = document.getElementById("zipAdd").value;
+    const shippingCity  = document.getElementById("cityAdd").value;
+    const shippingState = document.getElementById("stateAdd").value;
 
-    // Grabs any elements that have changed
-    const fullname          = document.getElementById("fullName").value.toString().split(" ")
-    const _firstname        = fullname[0];
-    const _lastname         = fullname[1];
-    const _card_num         = document.getElementById("ccNum").value;
-    const _card_month       = document.getElementById("monthExp").value;
-    const _card_year        = document.getElementById("yearExp").value;
-    const _card_cvv         = document.getElementById("cvvNum").value;
-    const _billing_addr     = document.getElementById("b_zipAdd").value;
+    var billingAddr1, billingAddr2, billingZIP, billingCity, billingState;
+    if (document.getElementById("sameAdd").value === "yes") {
+        billingAddr1  = document.getElementById("streetAdd").value;
+        billingAddr2  = document.getElementById("streetAddMore").value;
+        billingZIP    = document.getElementById("zipAdd").value;
+        billingCity   = document.getElementById("cityAdd").value;
+        billingState  = document.getElementById("stateAdd").value;
+    } else {
+        billingAddr1  = document.getElementById("b_streetAdd").value;
+        billingAddr2  = document.getElementById("b_streetAddMore").value;
+        billingZIP    = document.getElementById("b_zipAdd").value;
+        billingCity   = document.getElementById("b_cityAdd").value;
+        billingState  = document.getElementById("b_stateAdd").value;
+    }
     
-    // Comparison
-    var results = `EDIT,${user_data.password},`
-    results += firstname != _firstname && _firstname !== "" ? _firstname : firstname;
+    // Comparison to existing values
+    var results = `EDIT,`
+    results += user_data.firstName !== firstname && firstname !== "" ? firstname : user_data.firstName;
     results += ",";
-    results += lastname != _lastname && _lastname !== "" ? _lastname : lastname;
+    results += user_data.lastName !== lastname && lastname !== "" ? lastname : user_data.lastName;
     results += ",";
     results += user_data.email;
     results += ",";
-    results += user_data.userType;
+
+    switch (user_data.userType)
+    {
+        case "ADMIN":
+            results += "1";
+            break;
+        case "CUSTOMER":
+            results += "2";
+            break;
+        case "EMPLOYEE":
+            results += "3";
+            break;
+    }
+
     results += ",";
-    results += billing_addr != _billing_addr && _billing_addr !== "" ? _billing_addr : billing_addr;
+    results += user_data.billingAddressLine1 !== billingAddr1 && billingAddr1 !== "" ? billingAddr1 : user_data.billingAddressLine1;
     results += ",";
-    results += user_data.ACTIVE;
-    results += ","
-    results += card_num != _card_num && _card_num !== "" ? _card_num : card_num;
+    results += user_data.billingAddressLine2 !== billingAddr2 && billingAddr2 !== "" ? billingAddr2 : user_data.billingAddressLine2;
     results += ",";
-    results += card_cvv != _card_cvv && _card_cvv !== "" ? _card_cvv : card_cvv;
+    results += user_data.billingZip !== billingZIP && billingZIP !== "" ? billingZIP : user_data.billingZip;
     results += ",";
-    results += card_month != _card_month && _card_month !== "" ? _card_month : card_month;
+    results += user_data.billingCity !== billingCity && billingCity !== "" ? billingCity : user_data.billingCity;
     results += ",";
-    results += card_year != _card_year && _card_year !== "" ? _card_year : card_year;
+    results += user_data.billingState !== billingState && billingState !== "" ? billingState : user_data.billingState;
+    results += ",";
+    results += user_data.shippingAddressLine1 !== shippingAddr1 && shippingAddr1 !== "" ? shippingAddr1 : user_data.shippingAddressLine1;
+    results += ",";
+    results += user_data.shippingAddressLine2 !== shippingAddr2 && shippingAddr2 !== "" ? shippingAddr2 : user_data.shippingAddressLine2;
+    results += ",";
+    results += user_data.shippingZip !== shippingZIP && shippingZIP !== "" ? shippingZIP : user_data.shippingZip;
+    results += ",";
+    results += user_data.shippingCity !== shippingCity && shippingCity !== "" ? shippingCity : user_data.shippingCity;
+    results += ",";
+    results += user_data.shippingState !== shippingState && shippingState !== "" ? shippingState : user_data.shippingState;
+    results += ",";
+    results += user_data.cardnum !== cardnum && cardnum !== "" ? cardnum : user_data.cardnum;
+    results += ",";
+    results += user_data.securitynum !== cvv && cvv !== "" ? cvv : user_data.securitynum;
+    results += ",";
+    results += user_data.expmonth !== expmonth && expmonth !== "" ? expmonth : user_data.expmonth;
+    results += ",";
+    results += user_data.expdate !== expdate && expdate !== "" ? expdate : user_data.expdate;
+    results += ",";
+    results += user_data.enabledPromotion;
 
     const message = results;
 
@@ -77,7 +119,7 @@ function editUser(user_data)
 
     socket.onmessage = (event) => {
         console.log(event.data); // debug
-        if (event.data === "SUCCESS") {
+        if (event.data.toString().toUpperCase() === "SUCCESS") {
             window.location.href = "profile.html";
         }
         socket.close();
