@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Confirmation Page</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
+	<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="register-styles.css" />
+    <script src="confirmation-script.js"></script>
+	<link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <div class="form-card">
+        <div class="confirm-form">
+            <h1>Confirmation</h1>
+            <p>
+                A confirmation email has been sent to the email you provided. Please
+                enter your email and confirmation code before continuing:
+            </p>
+            <br>
+            <input type="text" id="emailBox" placeholder="Enter Email...">
+            <input type="text" id="confirmBox" placeholder="Enter Confirmation Code...">
+            <br>
+            <button type="submit" id="confirmBtn">Confirm</button>
+            <br>
+            <div id="confirm-error"></div>
+        </div>
+    </div>
+</body>
+</html>
