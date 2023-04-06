@@ -9,9 +9,50 @@ nav  {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     color: white;
     background-color: darkred;
+}
+
+button {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: darkred;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+    background-color: darkred;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:hover {
+    background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    color: black;
+}
+
+button:hover a {
+    background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
 }
   
 .nav-links {
