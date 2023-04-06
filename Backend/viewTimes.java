@@ -19,19 +19,21 @@ public class viewTimes {
         tempResults.next();
         int len = tempResults.getInt("COUNT(*)");
         int i =0;
-        String showtimes[] = new String[len];
+        String showtimes = new String();
         while(results.next()) {
-            Time showtime = results.getTime("SHOWSTART");
+            Timestamp showtime = results.getTimestamp("SHOWSTART");
             System.out.println(showtime);
             String time = showtime.toString();
-            showtimes[i] = time;
+            showtimes += time;
+            showtimes += ",";
         }
-        output = showtimes.toString();
+        output = showtimes;
         }
         catch(SQLException e) { 
             e.printStackTrace();
             return "failure";
         }
-        return output;
+        return output.substring(0,output.length() -1);
+        
     }
 }

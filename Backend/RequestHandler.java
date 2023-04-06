@@ -48,7 +48,10 @@ public class RequestHandler {
         } else if (command.equals("GETMOVIES")) {
             getMovies getMovies = new getMovies();
             message = getMovies.getMoviesEx(connection);
-        } 
+        } else if (command.equals("ADDPROMOTION")) {
+            addPromotion addPromotion = new addPromotion();
+            message = addPromotion.addPromotionEx(inputs, connection);
+        }
         return message;
     } // handleRequest
 
