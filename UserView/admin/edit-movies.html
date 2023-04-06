@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>
+		<meta charset="UTF-8"/>
+		<title>Add Movies Page</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
+		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="man_mv_styles.css" />
+		<link rel="icon" href="favicon.ico">
+	</head>
+    <body>
+        <nav>
+            <h1>Cinema E-Booking System</h1>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="../homepage.html"><img src="../images/icons/home_icon.png" height="25px" width="25px"></a></li>
+            </ul>
+        </nav>
+        <div class="banner">
+            <h1>Edit Movie</h1>
+        </div>
+        <div class="content-one">
+            <div class="col-one">
+                <div class="card-side">
+                    <div class="profile-body">
+                        <img src="../images/insert-img-here.png" width="200px" height="300px">
+                        <div class="user-bar">
+                            <h2>Insert Image</h2>
+                            <h2>Link to Trailer: <em>Add link to trailer here</em></h2>
+                            <h2>MPAA-US Film Rating: <em>Insert Film Rating here</em></h2>
+                            <a href="admin-home.html">Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-one">
+                <div class="slide-two">
+                    <div class="profile-body">
+                        <form action="#">
+                            <div class="content-one">
+                                <label for="mvName" text-align="center">Movie Title: </label>
+                                <input type="text" name="mvName" id="mvName" required placeholder="Enter Movie Title...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="category" text-align="center">Category: </label>
+                                <input type="text" name="category" id="category" required placeholder="Enter Category...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="syn" text-align="center">Synopsis: </label>
+                                <input type="text" name="syn" id="syn" required placeholder="Enter Synopsis...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="reviews" text-align="center">Reviews: </label>
+                                <input type="text" name="reviews" id="reviews" required placeholder="Enter Reviews (if any)...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="shows" text-align="center">Showtimes: </label>
+                                <input type="text" name="shows" id="shows" required placeholder="Enter Showtimes...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
+                                <label for="castCrew" text-align="center">Cast and Crew: </label>
+                            </div>
+                            <div class="content-one">
+                                <label for="cast" text-align="center">Cast: </label>
+                                <input type="text" name="cast" id="cast" required placeholder="Enter Cast names...">
+                            </div>
+                            <div class="content-one">
+                                <label for="dir" text-align="center">Director: </label>
+                                <input type="number" name="dir" id="dir" required placeholder="Enter Director(s) names...">
+                            </div>
+                            <div class="content-one">
+                                <label for="prod" text-align="center">Producer: </label>
+                                <input type="number" name="prod" id="prod" required placeholder="Enter Producer(s) names...">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="profile.html">Cancel Edits</a></li>
+                    </ul>
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="../homepage.html">Home</a></li>
+                    </ul>
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="profile.html">Save Edits</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </body>
+</html>
