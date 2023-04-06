@@ -47,12 +47,22 @@ public class loginUser {
                     String password = encrypter.decrypt(results.getString("password"),secretKey);
                     String firstName = results.getString("firstName");
                     String lastName = results.getString("lastName");
-                    String billingAddress = results.getString("billingAddressLine1");
+                    String billingAddressLine1 = results.getString("billingAddressLine1");
+                    String billingAddressLine2 = results.getString("billingAddressLine2");
+                    String billingZip = results.getString("billingZip");
+                    String billingCity = results.getString("billingCity");
+                    String billingState = results.getString("billingState");
+                    String shippingAddressLine1 = results.getString("shippingAddressLine1");
+                    String shippingAddressLine2 = results.getString("shippingAddressLine2");
+                    String shippingZip = results.getString("shippingZip");
+                    String shippingCity = results.getString("shippingCity");
+                    String shippingState = results.getString("shippingState");
                     String ACTIVE = results.getString("ACTIVE");
                     String cardnum = encrypter.decrypt(results.getString("cardnum"),secretKey);
                     String securitynum = encrypter.decrypt(results.getString("securitynum"),secretKey);
                     String expmonth = results.getString("expmonth");
                     String expdate = results.getString("expdate");
+                    String enabledPromotion = results.getString("enabledPromotion");
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("userID",userID);
                     jsonObject.put("password",password);
@@ -60,17 +70,26 @@ public class loginUser {
                     jsonObject.put("lastName",lastName);
                     jsonObject.put("email",email);
                     jsonObject.put("userType",userType);
-                    jsonObject.put("billingAddress",billingAddress);
+                    jsonObject.put("billingAddressLine1",billingAddressLine1);
+                    jsonObject.put("billingAddressLine2",billingAddressLine2);
+                    jsonObject.put("billingZip",billingZip);
+                    jsonObject.put("billingCity",billingCity);
+                    jsonObject.put("billingState",billingState);
+                    jsonObject.put("shippingAddressLine1",shippingAddressLine1);
+                    jsonObject.put("shippingAddressLine2",shippingAddressLine2);
+                    jsonObject.put("shippingZip",shippingZip);
+                    jsonObject.put("shippingCity",shippingCity);
+                    jsonObject.put("shippingState",shippingState);
                     jsonObject.put("ACTIVE",ACTIVE);
                     jsonObject.put("cardnum",cardnum);
                     jsonObject.put("securitynum",securitynum);
                     jsonObject.put("expmonth",expmonth);
                     jsonObject.put("expdate",expdate);
+                    jsonObject.put("enabledPromotion",enabledPromotion);
                     FileWriter file = new FileWriter("./UserView/login-user-info.json");
                     file.write(jsonObject.toJSONString());
                     file.close();
-                    return ("SUCCESS," + userID + "," + password + "," + firstName + "," + lastName + "," + email +"," + userType + "," + 
-                    billingAddress + "," + ACTIVE + "," + cardnum + "," + securitynum + "," + expmonth + "," + expdate);
+                    return "SUCCESS";
 
                 } else {
                     String findUserEmail = "select * from cinemabookingsystem.user where ? = email";
