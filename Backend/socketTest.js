@@ -7,9 +7,9 @@ function runCode() {
     socket.onopen = function(e) {
       console.log("[open] Connection established");
       console.log("Sending to server");
-      socket.send("REGISTER,test123,charlie,skinner,chuckskined@outlook.com,2, billline1,billline2,billzip,billcity,billstate,shipline1,shipline2,shipzip,shipcity,shipstate,12345,123,01,02,1");
+      //socket.send("REGISTER,test123,charlie,skinner,chuckskined@outlook.com,2, billline1,billline2,billzip,billcity,billstate,shipline1,shipline2,shipzip,shipcity,shipstate,12345,123,01,02,1");
       //socket.send("LOGIN,chuckskined@gmail.com,test123");
-      //socket.send("EDIT,test12345,charleys,o'briens,chuckskined@gmail.com,1,newaddress2,2222,122,9,10");
+      socket.send("EDIT,charleys,o'briens,chuckskined@gmail.com,2,newbill1,newbil2,newbzip,newbcity,newbstate,news1,news2,newszip,newscity,newsstate,1111,000,5,7,0");
       //socket.send("CONFIRM,chuckskined@gmail.com,14300");
       //socket.send("ADDMOVIE,tt1234567,casting,genre, producer, duration, trailPic, trailVid, 3, 2");
       //socket.send("REQUESTFORGOTPW,chuckskined@gmail.com");
