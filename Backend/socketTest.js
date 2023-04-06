@@ -19,7 +19,8 @@ function runCode() {
       //socket.send("SEARCHINPUT,tt123");
       //socket.send("GETMOVIES");
       //socket.send("GETSHOWTIMES,1");
-      socket.send("ADDPROMOTION,take15,15");
+      //socket.send("ADDPROMOTION,take15,15");
+      socket.send("GETPROMOTION");
       
     };
     
