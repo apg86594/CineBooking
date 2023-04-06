@@ -45,6 +45,9 @@ public class RequestHandler {
         } else if (command.equals("GETSHOWTIMES")) {
             viewTimes viewTimes = new viewTimes();
             message = viewTimes.timeAndPlace(inputs,connection);
+        } else if (command.equals("GETMOVIES")) {
+            getMovies getMovies = new getMovies();
+            message = getMovies.getMoviesEx(connection);
         }
         return message;
     } // handleRequest

@@ -16,7 +16,8 @@ function runCode() {
       //socket.send("SUBMITFORGOTPW,chuckskined@gmail.com,newPW123,14899");
       //socket.send("LOGOUT");
       //socket.send("SEARCHGENRE,genre");
-      socket.send("SEARCHINPUT,tt123");
+      //socket.send("SEARCHINPUT,tt123");
+      socket.send("GETMOVIES");
       
     };
     

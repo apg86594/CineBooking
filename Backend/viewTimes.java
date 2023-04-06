@@ -16,6 +16,7 @@ public class viewTimes {
         results = searchMovStmt.executeQuery();
         getLengthStmt.setString(1, inputs[1]);
         ResultSet tempResults = getLengthStmt.executeQuery();
+        tempResults.next();
         int len = tempResults.getInt("COUNT(*)");
         int i =0;
         String showtimes[] = new String[len];
