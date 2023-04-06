@@ -54,6 +54,9 @@ public class RequestHandler {
         } else if (command.equals("GETPROMOTION")) {
             getPromotion getPromotion = new getPromotion();
             message = getPromotion.getPromotionEx(connection);
+        } else if (command.equals("SENDPROMOTION")) {
+            sendPromotion sendPromotion = new sendPromotion();
+            message = sendPromotion.sendPromotionEx(inputs, connection);
         }
         return message;
     } // handleRequest

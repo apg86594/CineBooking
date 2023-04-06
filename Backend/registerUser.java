@@ -60,7 +60,8 @@ public class registerUser {
                 preparedStmt.setString(22, inputs[20]); // enabledPromotion
                 preparedStmt.execute();
                 SendEmail sendConfirmation = new SendEmail();
-                sendConfirmation.sendEmail(inputs[4], (String)randomNumber);
+                String message = "Your confirmation code is: " + (String)randomNumber;
+                sendConfirmation.sendEmail(inputs[4], message,"Confirmation Code");
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
