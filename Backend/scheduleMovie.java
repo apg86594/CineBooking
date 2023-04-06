@@ -20,7 +20,7 @@ public class scheduleMovie {
         try {
 
             //Creates the query statement in sql for the show table
-            String findShowID = "select * from cinemabookingsystem.showtimes where ? = showID";
+           /*  String findShowID = "select * from cinemabookingsystem.showtimes where ? = showID";
             
             PreparedStatement findShowStmt = connection.prepareStatement(findShowID);
 
@@ -37,30 +37,31 @@ public class scheduleMovie {
 
                // timeStamp = results.getString("timeStamp");
             }
-
+*/
 
 
             //Creates the query statement in sql for the show table
             String findMovieID = "select * from cinemabookingsystem.movie where ? = movieID";
-            
+            String movieDuration;
             PreparedStatement findMovieIDStmt = connection.prepareStatement(findMovieID);
 
             //sets the value of the question mark in the find show statement
-            findMovieIDStmt.setString(1, inputs[2]);
+            findMovieIDStmt.setString(1, inputs[1]);
 
             results = findMovieIDStmt.executeQuery();
-
             //checks to see if that movieID exists
             if(!results.next()) {
 
                 return "BADMOVIEID";
+            } else {
+                movieDuration = results.getString("duration");
             }
 
             String findAuditoriumID = "select * from cinemabookingsystem.auditorium where ? = audID";
 
             PreparedStatement findAuditoriumIDStmt = connection.prepareStatement(findAuditoriumID);
 
-            findAuditoriumIDStmt.setString(1, inputs[3]);
+            findAuditoriumIDStmt.setString(1, inputs[2]);
 
             results = findAuditoriumIDStmt.executeQuery();
 
@@ -71,19 +72,18 @@ public class scheduleMovie {
             }
 
             //Creates the sql statement
-            String sql = "INSERT INTO movieshow (showID, movieID, auditoriumID, availableSeats, showStart, timeFilled) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO movieshow (movieID, auditoriumID, availableSeats, showStart, timeFilled) VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStmt = connection.prepareStatement(sql);
 
             try {
                 //sets the values of the "question marks" in the sql statement
 
-                preparedStmt.setString(1, inputs[1]); //showID
-                preparedStmt.setString(2, inputs[2]); //movieID
-                preparedStmt.setString(3, inputs[3]); //auditoriumID
-                preparedStmt.setString(4, inputs[4]); //availableSeats
-                preparedStmt.setString(5, inputs[5]); //showStart
-                preparedStmt.setString(6, inputs[6]); //timeFilled
+                preparedStmt.setString(1, inputs[1]); //movieID
+                preparedStmt.setString(2, inputs[2]); //auditoriumID
+                preparedStmt.setString(3, inputs[3]); //availableSeats
+                preparedStmt.setString(4, inputs[4]); //showStart
+                preparedStmt.setString(5, movieDuration); //timeFilled
 
                 //executes the sql statement
                 preparedStmt.execute();
