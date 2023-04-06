@@ -34,7 +34,7 @@ function loginUser()
         console.log("Message received from server:", event.data);
 
         // If login failed, handle server error message
-        if (event.data.split(",")[0] !== "SUCCESS") {
+        if (event.data.split(" ")[0] !== "SUCCESS") {
             handleLoginError(event.data);
 
         // Else, login was successful
@@ -42,7 +42,7 @@ function loginUser()
         } else {
 
             // Redirects admins to the admin-home.html page
-            if (event.data.split(",")[6] === "ADMIN") {
+            if (event.data.split(" ")[1] === "ADMIN") {
                 window.location.href = "admin/admin-home.html";
 
             // Otherwise, direct user to default homepage
