@@ -21,7 +21,8 @@ function runCode() {
       //socket.send("GETSHOWTIMES,1");
       //socket.send("ADDPROMOTION,take15,15");
       //socket.send("GETPROMOTION");
-      socket.send("SENDPROMOTION,take15,15");
+      //socket.send("SENDPROMOTION,take15,15");
+      socket.send("SCHEDULEMOVIE, 1,1,50,2023-04-06 05:30:00.0")
       
     };
     
