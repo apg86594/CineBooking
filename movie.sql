@@ -22,14 +22,24 @@ lastName varchar(255),
 email varchar(255),
 USERTYPE int,
 FOREIGN KEY (USERTYPE) REFERENCES USERTYPE (userTypeID),
-billingAddress varchar(255),
+billingAddressLine1 varchar(255),
+billingAddressLine2 varchar(255),
+billingZip varchar(255),
+billingCity varchar(255),
+billingState varchar(255),
+shippingAddressLine1 varchar(255),
+shippingAddressLine2 varchar(255),
+shippingZip varchar(255),
+shippingCity varchar(255),
+shippingState varchar(255),
 ACTIVE int,
 FOREIGN KEY (ACTIVE) REFERENCES ACTIVE (activeID),
 confirm int,
 cardnum varchar(255),
 securitynum varchar(255),
 expmonth int,
-expdate int
+expdate int,
+enabledPromotion int
 );
 
 INSERT INTO USERTYPE VALUES(1, "ADMIN");
@@ -62,7 +72,7 @@ INSERT INTO USRating VALUES(3, "R");
 
 
 CREATE TABLE IF NOT EXISTS MOVIE(
-movieID int NOT NULL,
+movieID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY (movieID),
 title varchar(255) NOT NULL,
 casting varchar(255),
@@ -77,7 +87,7 @@ FOREIGN KEY (ratingID) REFERENCES USRating (ratingID)
 );
 
 CREATE TABLE IF NOT EXISTS AUDITORIUM (
-audID int,
+audID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(audID), 
 audName varchar(255),
 noOfSeats int
@@ -98,7 +108,7 @@ timeStamp time
 );
 
 CREATE TABLE IF NOT EXISTS MOVIESHOW (
-showID int,
+showID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY (showID),
 movieID int,
 FOREIGN KEY (movieID) REFERENCES MOVIE (movieID),
@@ -123,7 +133,7 @@ INSERT INTO TICKETTYPE VALUES(3, "SENIOR", 12.0);
 
 
 CREATE TABLE IF NOT EXISTS BOOKING (
-bookingID int,
+bookingID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY (bookingID),
 userID int,
 FOREIGN KEY (userID) REFERENCES USER (userID),
@@ -136,15 +146,9 @@ totalPrice float,
 promoID int
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
+CREATE TABLE IF NOT EXISTS PROMOTIONS (
+promotionID int NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (promotionID),
+promotionCode varChar(255),
+percentOff int
+);
