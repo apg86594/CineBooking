@@ -82,8 +82,6 @@ function registerUser()
         promo = "0";
     }
 
-    console.log(shippingAddr2);
-
     var message = `REGISTER,${psw},${first},${last},${email},${USERTYPE},${billingAddr1},${billingAddr2},${billingZIP},`;
     message    += `${billingCity},${billingState},${shippingAddr1},${shippingAddr2},${shippingZIP},${shippingCity},`;
     message    += `${shippingState},${cardnum},${cvv},${_month},${_year},${promo}`;
@@ -95,7 +93,7 @@ function registerUser()
 
         // Registration success
         if (event.data === "SUCCESS") {
-            window.location.href = "register_suc.html";
+            window.location.href = "confirmation.html";
         
         // Registration failure
         } else if (event.data === "FAILURE") {

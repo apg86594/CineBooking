@@ -131,7 +131,8 @@ nav  {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding-left: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     color: white;
 }
   
@@ -164,6 +165,20 @@ nav  {
     border-radius: 10px;
     color: black;
     text-decoration: none;
+}
+
+.confirm-form {
+    text-align: center;
+    justify-content: center;
+    width: 40%;
+}
+
+.confirm-form button {
+    width: 30%;
+}
+
+.confirm-form input {
+    width: 50%;
 }
 
 #error-message {
