@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
 		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="admin-styles.css" />
+        <script src="manage-movies.js"></script>
 		<link rel="icon" href="favicon.ico">
 	</head>
 
@@ -17,7 +18,7 @@
 		<ul class="nav-links">
             <li class="nav-item"><a href="../homepage.html">User Home</a></li>
             <li class="nav-item"><a href="admin-home.html">Admin Home</a></li>
-            <li class="nav-item"><a href="../login.html">Login</a></li>
+            <li class="nav-item" type="button" id="logoutBtn">Logout</a></li>
 		</ul>
 	</nav>
 
@@ -37,13 +38,13 @@
         <div class="tint-one" >
             <div class = "open-title">
                 <div class="buttons-col">
-                    <a href="#" button type="button" class="addmovie">Add Movie</a>
+                    <button button type="button" class="addmovie" id="addBtn">Add Movie</button>
                 </div>
                 <div class="buttons-col">
-                    <a href="#" button type="button" class="editmovie">Edit Movie</a>
+                    <button button type="button" class="editmovie" id="editBtn">Edit Movie</button>
                 </div>
                 <div class="buttons-col">
-                    <a href="#" button type="button" class="delmovie">Delete Movie</a>
+                    <button button type="button" class="delmovie" id="delBtn">Delete Movie</button>
                 </div>
             </div>
             <h2>Currently Showing</h2>
@@ -56,7 +57,7 @@
                             play in the 2017 Super Bowl.
                         </p>
                         <a href="https://www.youtube.com/watch?v=-UeGXB2NjR8" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
                     <div class="item-col">
                         <img src="../images/movie/knock at the cabin.jpg" alt="Knock at the Cabin" width="400px" height="600px"/>
@@ -68,7 +69,7 @@
                             the family must decide what they believe before all is lost.
                         </p>
                         <a href="https://www.youtube.com/watch?v=gv_QhoUy-xc" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
                     <div class="item-col">
                         <img src="../images/movie/puss in boots.jpg" alt="Puss in Boots" width="400px" height="600px"/>
@@ -79,7 +80,7 @@
                             Last Wish and restore his nine lives.
                         </p>
                         <a href="https://www.youtube.com/watch?v=RqrXhwS33yc" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
                     <div class="item-col">
                         <img src="../images/movie/quantumania.jpg" alt="Quantumania" width="400px" height="600px"/>
@@ -90,7 +91,7 @@
                             possible.
                         </p>
                         <a href="https://www.youtube.com/watch?v=ZlNFpri-Y40" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
                     <div class="item-col">
                         <img src="../images/movie/avatar the way of the water.jpg" alt="Avatar: The Way of the Water" width="400px" height="600px"/>
@@ -101,7 +102,7 @@
                             fight a difficult war against the humans.
                         </p>
                         <a href="https://www.youtube.com/watch?v=d6xdV8VAqBY" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
                     <div class="item-col">
                         <img src="../images/movie/a man called otto.jpg" alt="A Man Called Otto" width="400px" height="600px"/>
@@ -112,7 +113,7 @@
                             upside down.
                         </p>
                         <a href="https://www.youtube.com/watch?v=eFYUX9l-m5I" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
                     <div class="item-col">
                         <img src="../images/movie/MEGAN.jpg" alt="M3GAN" width="400px" height="600px"/>
@@ -126,7 +127,7 @@
                             prototype, a decision that leads to unimaginable consequences.
                         </p>
                         <a href="https://www.youtube.com/watch?v=BRb4U99OU80" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
                     <div class="item-col">
                         <img src="../images/movie/Pathaan.jpg" alt="Pathaan" width="400px" height="600px"/>
@@ -135,7 +136,7 @@
                             who have a heinous plot for his homeland.
                         </p>
                         <a href="https://www.youtube.com/watch?v=nDHsBUbivz8" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
                     <div class="item-col">
                         <img src="../images/movie/magic mike.jpg" alt="Magic Mike's Last Dance" width="400px" height="600px"/>
@@ -148,7 +149,7 @@
                             to whip a hot new roster of talented dancers into shape.
                         </p>
                         <a href="https://www.youtube.com/watch?v=pBIGdw-BRxw" button type="button" class="trailerbtn">Trailer</a>
-                        <a href="booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
+                        <a href="../booking.html" button type="button" class="bookmovie">Book Tickets</a></button>
                     </div>
 				</div>
         </div>
