@@ -1,19 +1,11 @@
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Random;
-import java.io.*;
-import org.json.simple.JSONObject;
 
 public class addMovie {
 
     private ResultSet results;
-    String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
-    String username = "root"; // set user name to local server username
-    String password = "Test123"; // set password to local server password
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 

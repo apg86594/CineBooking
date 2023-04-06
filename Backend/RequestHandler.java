@@ -24,7 +24,7 @@ public class RequestHandler {
             message = confirm.confirmationEx(inputs, connection);
         } else if (command.equals("REQUESTFORGOTPW")) {
             requestForgotPW request = new requestForgotPW();
-            message = request.requestForgotPW(inputs, connection);
+            message = request.requestForgotPWEx(inputs, connection);
         } else if (command.equals("SUBMITFORGOTPW")) {
             submitForgotPW submit = new submitForgotPW();
             message = submit.submitForgotPWEx(inputs, connection);

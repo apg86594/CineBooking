@@ -1,5 +1,4 @@
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,13 +8,10 @@ import java.io.*;
 public class requestForgotPW {
 
     private ResultSet results;
-    String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
-    String username = "root"; // set user name to local server username
-    String password = "Test123"; // set password to local server password
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 
-    public String requestForgotPW(String[] inputs, Connection connection) {
+    public String requestForgotPWEx(String[] inputs, Connection connection) {
         try {
         Random r = new Random();
         String randomNumber = String.format("%04d", 10000 + r.nextInt(9999));

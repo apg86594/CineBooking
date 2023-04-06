@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class webserver extends WebSocketServer {
 
