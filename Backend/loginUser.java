@@ -89,7 +89,7 @@ public class loginUser {
                     FileWriter file = new FileWriter("./UserView/login-user-info.json");
                     file.write(jsonObject.toJSONString());
                     file.close();
-                    return "SUCCESS";
+                    return "SUCCESS " + userType;
 
                 } else {
                     String findUserEmail = "select * from cinemabookingsystem.user where ? = email";
