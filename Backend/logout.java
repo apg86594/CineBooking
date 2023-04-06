@@ -13,20 +13,30 @@ public class logout {
 
     public String logoutEx() {
         JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("userID","");
-                    jsonObject.put("password","");
-                    jsonObject.put("firstName","");
-                    jsonObject.put("lastName","");
-                    jsonObject.put("email","");
-                    jsonObject.put("userType","");
-                    jsonObject.put("billingAddress", "");
-                    jsonObject.put("ACTIVE", "");
-                    jsonObject.put("cardnum", "");
-                    jsonObject.put("securitynum", "");
-                    jsonObject.put("expmonth", "");
-                    jsonObject.put("expdate", "");
-                    FileWriter file;
-                    try {
+        jsonObject.put("userID","");
+        jsonObject.put("password","");
+        jsonObject.put("firstName","");
+        jsonObject.put("lastName","");
+        jsonObject.put("email","");
+        jsonObject.put("userType","");
+        jsonObject.put("billingAddressLine1","");
+        jsonObject.put("billingAddressLine2","");
+        jsonObject.put("billingZip","");
+        jsonObject.put("billingCity","");
+        jsonObject.put("billingState","");
+        jsonObject.put("shippingAddressLine1","");
+        jsonObject.put("shippingAddressLine2","");
+        jsonObject.put("shippingZip","");
+        jsonObject.put("shippingCity","");
+        jsonObject.put("shippingState","");
+        jsonObject.put("ACTIVE","");
+        jsonObject.put("cardnum","");
+        jsonObject.put("securitynum","");
+        jsonObject.put("expmonth","");
+        jsonObject.put("expdate","");
+        jsonObject.put("enabledPromotion","");
+        FileWriter file;
+        try {
                         file = new FileWriter("./UserView/login-user-info.json");
                         file.write(jsonObject.toJSONString());
                         file.close();
