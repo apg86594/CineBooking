@@ -30,8 +30,6 @@ function displayInfo(user_data)
         email.innerHTML = `${user_data.email}`;
     }
 
-    // Display user's phone number
-
     // Display user's last 4 credit card number
     if (user_data.cardnum !== "") {
         const card = document.getElementById("cardnum");
@@ -57,10 +55,16 @@ function displayInfo(user_data)
         cvv.innerHTML = `${user_data.securitynum}`;
     }
     
+    // Display shipping info
+    const shipping = `${user_data.shippingAddressLine1} ${user_data.shippingAddressLine2} ${shppingCity} ${shippingState} ${shippingZip}`;
+    if (shipping !== "") {
+        document.getElementById("shipping_addr").innerHTML = shipping;
+    }
+
     // Display billing info
-    if (user_data.billingAddress !== "") {
-        const billing = document.getElementById("billing_addr");
-        billing.innerHTML = `${user_data.billingAddress}`;
+    const billing = `${user_data.billingAddressLine1} ${user_data.billingAddressLine2} ${billingCity} ${billingState} ${billingZip}`;
+    if (billing !== shipping) {
+        document.getElementById("billing_addr").innerHTML = billing;
     }
 }
 
