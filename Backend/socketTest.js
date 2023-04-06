@@ -17,7 +17,8 @@ function runCode() {
       //socket.send("LOGOUT");
       //socket.send("SEARCHGENRE,genre");
       //socket.send("SEARCHINPUT,tt123");
-      socket.send("GETMOVIES");
+      //socket.send("GETMOVIES");
+      socket.send("GETSHOWTIMES, 2");
       
     };
     

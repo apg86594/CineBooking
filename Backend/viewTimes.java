@@ -8,8 +8,8 @@ public class viewTimes {
     public String timeAndPlace(String[] inputs, Connection connection) { 
         String output = "failure";
     try {
-        String searchMov = "select * from cinebookingsystem.movieshow where ? = movieID";
-        String getLength = "select count(*) from cinebookingsystem.movieshow where ? = movieID";
+        String searchMov = "select * from cinemabookingsystem.movieshow where ? = movieID";
+        String getLength = "select count(*) from cinemabookingsystem.movieshow where ? = movieID";
         PreparedStatement searchMovStmt = connection.prepareStatement(searchMov);
         PreparedStatement getLengthStmt = connection.prepareStatement(getLength);
         searchMovStmt.setString(1, inputs[1]);
@@ -22,6 +22,7 @@ public class viewTimes {
         String showtimes[] = new String[len];
         while(results.next()) {
             Time showtime = results.getTime("SHOWSTART");
+            System.out.println(showtime);
             String time = showtime.toString();
             showtimes[i] = time;
         }
