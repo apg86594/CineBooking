@@ -11,6 +11,16 @@ function initialize()
     socket = new WebSocket("ws://127.0.0.1:8888");
     socket.onopen = () => {
         console.log("Connection to server established.");
+
+        const shipCheckBox = document.getElementById("sameAsShip");
+        shipCheckBox.addEventListener("change", (event) => {
+            if (event.target.checked) {
+                document.getElementById("billing-info").style.display = "none";
+            } else {
+                document.getElementById("billing-info").style.display = "block";
+            }
+        })
+
         const button = document.getElementById("signupbtn");
         button.addEventListener("click", (event) => {
             event.preventDefault();
@@ -25,12 +35,37 @@ function initialize()
  */
 function registerUser()
 {
+    // Personal info
     const psw           = document.getElementById("psw").value;
     const first         = document.getElementById("firstName").value;
     const last          = document.getElementById("lastName").value;
     const email         = document.getElementById("Email").value;
-    const USERTYPE      = 1;
-    const billingZIP    = document.getElementById("billingZIP").value;
+    const USERTYPE      = 2;
+
+    // Shipping info
+    const shippingAddr1 = document.getElementById("shippingAddr1").value;
+    const shippingAddr2 = document.getElementById("shippingAddr2").value;
+    const shippingCity  = document.getElementById("shippingCity").value;
+    const shippingState = document.getElementById("shippingState").value;
+    const shippingZIP   = document.getElementById("shippingZIP").value;
+
+    // Billing info
+    var billingAddr1, billingAddr2, billingCity, billingState, billingZIP;
+    if (document.getElementById("sameAsShip").value === "yes") {
+        billingAddr1  = document.getElementById("shippingAddr1").value;
+        billingAddr2  = document.getElementById("shippingAddr2").value;
+        billingCity   = document.getElementById("shippingCity").value;
+        billingState  = document.getElementById("shippingState").value;
+        billingZIP    = document.getElementById("shippingZIP").value;
+    } else {
+        billingAddr1  = document.getElementById("billingAddr1").value;
+        billingAddr2  = document.getElementById("billingAddr2").value;
+        billingCity   = document.getElementById("billingCity").value;
+        billingState  = document.getElementById("billingState").value;
+        billingZIP    = document.getElementById("billingZIP").value;
+    }
+
+    // Card info
     const cardnum       = document.getElementById("cardnum").value;
     const cvv           = document.getElementById("cvv").value;
     const month         = document.getElementById("Month").value;
@@ -38,8 +73,20 @@ function registerUser()
 
     const _month = convertMonthToInt(month);
     const _year  = year.slice(-2);
+    
+    // Promo info
+    var promo;
+    if (document.getElementById("promotions").value === "yes") {
+        promo = "1";
+    } else {
+        promo = "0";
+    }
 
-    const message = `REGISTER,${psw},${first},${last},${email},${USERTYPE},${billingZIP},${cardnum},${cvv},${_month},${_year}`;
+    console.log(shippingAddr2);
+
+    var message = `REGISTER,${psw},${first},${last},${email},${USERTYPE},${billingAddr1},${billingAddr2},${billingZIP},`;
+    message    += `${billingCity},${billingState},${shippingAddr1},${shippingAddr2},${shippingZIP},${shippingCity},`;
+    message    += `${shippingState},${cardnum},${cvv},${_month},${_year},${promo}`;
         
     socket.send(message);
         

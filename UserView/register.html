@@ -97,10 +97,70 @@
                             <input type="text" id="cvv" placeholder="CVV">
                         </div>
                     </div>
+                    <div id="shipping-info">
+                        <div class="form-newUser">
+                            <label for="shippingAddr1"> Shipping Address Line 1: </label>
+                            <br>
+                            <input type="text" name="shippingAddr1" id="shippingAddr1" required placeholder="Enter Shipping Adress...">
+                        </div>
+                        <div class="form-newUser">
+                            <label for="shippingAddr2"> Shipping Address Line 2: </label>
+                            <br>
+                            <input type="text" name="shippingAddr2" id="shippingAddr2" required placeholder="Enter Shipping Adress...">
+                        </div>
+                        <div class="form-newUser">
+                            <label for="shippingCity"> Shipping City: </label>
+                            <br>
+                            <input type="text" name="shippingCity" id="shippingCity" required placeholder="Enter Shipping City...">
+                        </div>
+                        <div class="form-newUser">
+                            <label for="shippingState"> Shipping State: </label>
+                            <br>
+                            <input type="text" name="shippingState" id="shippingState" required placeholder="Enter Shipping State...">
+                        </div>
+                        <div class="form-newUser">
+                            <label for="shippingZIP"> Shipping ZIP Code: </label>
+                            <br>
+                            <input type="text" name="shippingZIP" id="shippingZIP" required placeholder="Enter Shipping ZIP Code...">
+                        </div>
+                    </div>
                     <div class="form-newUser">
-                        <label for="billingZIP"> Billing ZIP Code: </label>
-                        <br>
-                        <input type="text" name="billingZIP" id="billingZIP" required placeholder="Enter Billing ZIP Code...">
+                        <label for="sameAsShip">
+                            <input type="checkbox" name="sameAsShip" id="sameAsShip" value="yes"> Billing: Same as shipping adress
+                        </label>
+                    </div>
+                    <br>
+                    <div id="billing-info">
+                        <div class="form-newUser">
+                            <label for="billingAddr1"> Billing Address Line 1: </label>
+                            <br>
+                            <input type="text" name="billingAddr1" id="billingAddr1" required placeholder="Enter Billing Adress...">
+                        </div>
+                        <div class="form-newUser">
+                            <label for="billingAddr2"> Billing Address Line 2: </label>
+                            <br>
+                            <input type="text" name="billingAddr2" id="billingAddr2" required placeholder="Enter Billing Address...">
+                        </div>
+                        <div class="form-newUser">
+                            <label for="billingCity"> Billing City: </label>
+                            <br>
+                            <input type="text" name="billingCity" id="billingCity" required placeholder="Enter Billing City...">
+                        </div>
+                        <div class="form-newUser">
+                            <label for="billingState"> Billing State: </label>
+                            <br>
+                            <input type="text" name="billingState" id="billingState" required placeholder="Enter Billing State...">
+                        </div>
+                        <div class="form-newUser">
+                            <label for="billingZIP"> Billing ZIP Code: </label>
+                            <br>
+                            <input type="text" name="billingZIP" id="billingZIP" required placeholder="Enter Billing ZIP Code...">
+                        </div>
+                    </div>
+                    <div class="form-newUser">
+                        <label for="promotions">
+                            <input type="checkbox" name="promotions" id="promotions" value="yes"> Sign up for promotions
+                        </label>
                     </div>
                     <hr class="divisions">
                     <div class="form-contact">
