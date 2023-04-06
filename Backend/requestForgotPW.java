@@ -21,7 +21,8 @@ public class requestForgotPW {
         updateUserStmt.setString(2, inputs[1]); //email
         updateUserStmt.execute();
         SendEmail sendConfirmation = new SendEmail();
-        sendConfirmation.sendEmail(inputs[1], (String)randomNumber);
+        String message = "Change your password with the code: " + (String)randomNumber;
+        sendConfirmation.sendEmail(inputs[1], message, "Change Password Code");
         } catch (SQLException | IOException e) {
             e.printStackTrace();
             return "FAILURE";
