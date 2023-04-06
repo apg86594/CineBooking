@@ -23,7 +23,7 @@ function initialize()
  */
 function confirmUser()
 {
-    socket.send(`CONFIRM,${document.getElementById("emailBox").value}`);
+    socket.send(`CONFIRM,${document.getElementById("emailBox").value},${document.getElementById("confirmBox").value}`);
 
     socket.onmessage = (event) => {
         console.log(event.data);
