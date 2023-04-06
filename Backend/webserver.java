@@ -4,8 +4,12 @@ import org.java_websocket.server.WebSocketServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class webserver extends WebSocketServer {
 
@@ -15,11 +19,21 @@ public class webserver extends WebSocketServer {
 
     private String request;
     RequestHandler requestHandler = new RequestHandler();
+    Connection connection;
+    String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
+    String username = "root"; // set user name to local server username
+    String password = "Test123"; // set password to local server password
 
     public webserver() {
         super(new InetSocketAddress("127.0.0.1",TCP_PORT));
         conns = new HashSet<>();
-        String request = "";
+        request = "";
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void setRequest(String newRequest) {
@@ -43,8 +57,8 @@ public class webserver extends WebSocketServer {
         System.out.println("Message from client: " + message);
         setRequest(message);
         try {
-            message = requestHandler.handleRequest(request);
-        } catch (IOException e) {
+            message = requestHandler.handleRequest(request, connection);
+        } catch (IOException | SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -60,6 +74,13 @@ public class webserver extends WebSocketServer {
             // do some thing if required
         }
         System.out.println("ERROR from " + conn.getRemoteSocketAddress().getAddress().getHostAddress());
+        ex.printStackTrace();
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         conn.close();
     }
 

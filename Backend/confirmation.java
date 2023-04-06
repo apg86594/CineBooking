@@ -13,8 +13,8 @@ public class confirmation {
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
     
-    public String confirmation(String[] inputs) { 
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+    public String confirmationEx(String[] inputs, Connection connection) { 
+        try {
             String findUser = "select * from cinemabookingsystem.user where ? = email";
             PreparedStatement findUserStmt = connection.prepareStatement(findUser);
             findUserStmt.setString(1, inputs[1]);
@@ -38,7 +38,6 @@ public class confirmation {
                         return "failure";
                     }
                 }
-                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
                 return "FAILURE";

@@ -13,16 +13,16 @@ public class editUser {
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 
-    public String editUser(String[] inputs) { 
+    public String editUserEx(String[] inputs, Connection connection) { 
         encryptObject encrypter = new encryptObject();
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        try {
             String findUser = "select * from cinemabookingsystem.user where ? = email";
             PreparedStatement findUserStmt = connection.prepareStatement(findUser);
             findUserStmt.setString(1, inputs[4]);
             results = findUserStmt.executeQuery();
             if(results.next()) { 
                 String userEmail = results.getString("email");
-                String sql = "UPDATE user SET password = ?, firstName=?, lastName=?, email=?, USERTYPE=?, billingAddress=?, ACTIVE=?, cardnum=?, securitynum=?, expmonth=?,expdate=?" +
+                String sql = "UPDATE user SET password = ?, firstName=?, lastName=?, email=?, USERTYPE=?, billingAddressLine1=?, ACTIVE=?, cardnum=?, securitynum=?, expmonth=?,expdate=?" +
                     "WHERE email = ?";
                     PreparedStatement preparedStmt = connection.prepareStatement(sql);
             try {
@@ -42,11 +42,11 @@ public class editUser {
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+                return "FAILURE";
             } // try
             }
             else 
             System.out.println("failure");
-            connection.close();
     } catch (SQLException e) {
         e.printStackTrace();
         return "FAILURE";

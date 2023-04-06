@@ -12,16 +12,14 @@ public class registerUser {
 
 
     private ResultSet results;
-    String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
-    String username = "root"; // set user name to local server username
-    String password = "Mala0905hello"; // set password to local server password
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
     
-    public String registerUser(String[] inputs) throws IOException {
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+    public String registerUserEx(String[] inputs, Connection connection) throws IOException {
             String findDupUser = "select * from cinemabookingsystem.user where ? = email";
-            PreparedStatement findDupUserStmt = connection.prepareStatement(findDupUser);
+            PreparedStatement findDupUserStmt;
+            try {
+                findDupUserStmt = connection.prepareStatement(findDupUser);
             encryptObject encrypter = new encryptObject();
             Random r = new Random();
             String randomNumber = String.format("%04d", 10000 + r.nextInt(9999));
@@ -34,10 +32,10 @@ public class registerUser {
             } catch (SQLException e) {
                 e.printStackTrace();
             } // try
-            String sql = "insert into user (password, firstName, lastName, email, USERTYPE, billingAddress, ACTIVE, confirm, cardnum, securitynum, expmonth, expdate)" +
+            String sql = "insert into user (password, firstName, lastName, email, USERTYPE, billingAddressLine1, ACTIVE, confirm, cardnum, securitynum, expmonth, expdate)" +
                     "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(sql);
-            try {
+        
                 preparedStmt.setString(1, encrypter.encrypt(inputs[1],secretKey)); //password
                 preparedStmt.setString(2, inputs[2]); //first
                 preparedStmt.setString(3, inputs[3]); // last
@@ -56,13 +54,10 @@ public class registerUser {
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+                return "FAILURE";
             } // try
             //email.sendEmail(inputs[4],randomNumber);
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return "FAILURE";
-        } // try
+            
         return "SUCCESS";
     }
     

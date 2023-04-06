@@ -11,7 +11,7 @@ public class logout {
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 
-    public String logout() {
+    public String logoutEx() {
         JSONObject jsonObject = new JSONObject();
                     jsonObject.put("userID","");
                     jsonObject.put("password","");
@@ -37,6 +37,10 @@ public class logout {
                     }
                     return "SUCCESS";
                     
+    }
+
+    public String logout() {
+        return null;
     }
     
 }

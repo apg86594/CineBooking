@@ -15,8 +15,8 @@ public class requestForgotPW {
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 
-    public String requestForgotPW(String[] inputs) {
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+    public String requestForgotPW(String[] inputs, Connection connection) {
+        try {
         Random r = new Random();
         String randomNumber = String.format("%04d", 10000 + r.nextInt(9999));
         String updateUser = "UPDATE user SET confirm = ? WHERE ? = email";
@@ -26,7 +26,6 @@ public class requestForgotPW {
         updateUserStmt.execute();
         SendEmail sendConfirmation = new SendEmail();
         sendConfirmation.sendEmail(inputs[1], (String)randomNumber);
-        connection.close();
         } catch (SQLException | IOException e) {
             e.printStackTrace();
             return "FAILURE";

@@ -17,12 +17,11 @@ public class loginUser {
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 
-    public String loginUser(String[] inputs) {
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+    public String loginUserEx(String[] inputs, Connection connection) {
             String findUser = "select * from cinemabookingsystem.user where ? = email and ? = password";
-            PreparedStatement findUserStmt = connection.prepareStatement(findUser);
             encryptObject encrypter = new encryptObject();
             try {
+                PreparedStatement findUserStmt = connection.prepareStatement(findUser);
                 findUserStmt.setString(1, inputs[1]);
                 findUserStmt.setString(2, encrypter.encrypt(inputs[2],secretKey));
                 results = findUserStmt.executeQuery();
@@ -51,7 +50,7 @@ public class loginUser {
                     String password = encrypter.decrypt(results.getString("password"),secretKey);
                     String firstName = results.getString("firstName");
                     String lastName = results.getString("lastName");
-                    String billingAddress = results.getString("billingAddress");
+                    String billingAddress = results.getString("billingAddressLine1");
                     String ACTIVE = results.getString("ACTIVE");
                     String cardnum = encrypter.decrypt(results.getString("cardnum"),secretKey);
                     String securitynum = encrypter.decrypt(results.getString("securitynum"),secretKey);
@@ -87,11 +86,7 @@ public class loginUser {
                     }
 
                 }
-            } catch (SQLException | IOException e) {
-                e.printStackTrace();
-            } // try
-            connection.close();
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
         return "BADUSER";

@@ -10,7 +10,6 @@ class server {
             WebSocketServer socket = new webserver();
             socket.run();
         } // while
-
     } // main
 
 }

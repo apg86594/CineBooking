@@ -1,31 +1,23 @@
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Random;
-import java.io.*;
-import org.json.simple.JSONObject;
 
 public class scheduleMovie {
 
     private ResultSet results;
-    String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
-    String username = "root"; // set user name to local server username
-    String password = "Test123"; // set password to local server password
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 
     //This function allows the admin to schedule a time for a movie to be shown
     //The input is an array of strings that will update the MOVIESHOW table
 
-    public String scheduleMovie(String[] inputs) {
+    public String scheduleMovieEx(String[] inputs, Connection connection) {
 
         //String timeStamp; 
 
         //connects to the database
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        try {
 
             //Creates the query statement in sql for the show table
             String findShowID = "select * from cinemabookingsystem.showtimes where ? = showID";
@@ -100,7 +92,6 @@ public class scheduleMovie {
                 return "FAILURE";
             } // try
 
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             return "FAILURE";
