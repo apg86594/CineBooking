@@ -30,8 +30,8 @@ public class getMovies {
                 jsonObject[i].put("duration",results.getString("duration"));
                 jsonObject[i].put("synopsis",results.getString("synopsis"));
                 jsonObject[i].put("display",results.getString("display"));
-                jsonObject[i].put("trailerPicture",results.getString("trailerPicture"));
-                jsonObject[i].put("trailerVideo",results.getString("trailerVideo"));
+                jsonObject[i].put("trailerPicture",results.getString("trailerPicture").replace("\\", ""));
+                jsonObject[i].put("trailerVideo",results.getString("trailerVideo").replace("\\", ""));
                 jsonObject[i].put("review", results.getString("review"));
                 String getRating = "select * from cinemabookingsystem.usrating where ? = ratingID";
                 PreparedStatement getRatingStmt = connection.prepareStatement(getRating);
