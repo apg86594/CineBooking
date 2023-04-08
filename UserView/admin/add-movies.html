@@ -57,7 +57,7 @@
                             <hr>
                             <div class="content-one">
                                 <label for="reviews" text-align="center">Reviews: </label>
-                                <input type="number" name="reviews" id="reviews" min="1" max="5" required placeholder="Enter Reviews (1-5)...">
+                                <input type="number" name="reviews" id="reviews" min="0" max="10.0" required placeholder="Enter Reviews (1.0 - 10.0)...">
                             </div>
                             <hr>
                             <div class="content-one">
@@ -76,13 +76,18 @@
                             </div>
                             <hr>
                             <div class="content-one">
-                                <label for="dir" text-align="center">Rating: </label>
+                                <label for="rating" text-align="center">Rating: </label>
                                 <input type="text" name="rating" id="rating" required placeholder="Enter Rating (PG-13, R, etc.)...">
                             </div>
                             <hr>
                             <div class="content-one">
+                                <label for="director" text-align="center">Director: </label>
+                                <input type="text" name="director" id="director" required placeholder="Enter Director's name...">
+                            </div>
+                            <hr>
+                            <div class="content-one">
                                 <label for="prod" text-align="center">Producer: </label>
-                                <input type="text" name="prod" id="prod" required placeholder="Enter Producer's names...">
+                                <input type="text" name="prod" id="prod" required placeholder="Enter Producer's name...">
                             </div>
                         </form>
                     </div>
