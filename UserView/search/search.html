@@ -1,0 +1,232 @@
+<!doctype html>
+<html><head>
+		<meta charset="UTF-8"/>
+		<title>Currently Showing</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
+		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="search-styles.css" />
+        <script src="search-script.js" async></script>
+
+		<link rel="icon" href="favicon.ico">
+	</head>
+
+<body>
+	<nav>
+        <h1>Cinema E-Booking System</h1>
+		<ul class="nav-links">
+            <li class="nav-item"><a href="../homepage.html"><img src="../images/icons/home_icon.png" height="25px" width="25px"></a></li>
+		</ul>
+	</nav>
+
+    <div class="banner">
+        <table id="ban-table">
+            <tr>
+                <td>
+                    <h1>Search</h1>
+                </td>
+                <td>
+                    <div class="ban-table">
+                        <form action="/action_page.php">
+                            <label for="searches">Choose a type:</label>
+                            <select name="searches" id="searches">
+                            <option value="title">Title</option>
+                            <option value="genre">Genre</option>
+                            <option value="rating">Rating</option>
+                            </select>
+                        </form>
+                    </div>
+                    </td>
+                        <td> 
+                            <div class="ban-table">
+                                <input type="text" id="textSearch" onkeyup="searchForText()" placeholder="Search..." name="textSearch" class="round" required>
+                            </div>   
+                        </td>   
+            </tr>
+        </table>
+	</div>
+
+    <div class="content-one">
+        <div class="tint-one" >
+            <div class="now_play_grid">
+                
+                <table id="myTable">
+                    <tr class="header">
+                        <th style="width:25%;">Movie</th>
+                        <th style="width:25%">Title</th>
+                        <th style="width:25%">Genre</th>
+                        <th style="width:15%">Rating</th>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/80 for brady.jpg" alt="80 for Brady" width="100px" height="150px"/></td>
+                        <td>80 for Brady</td>
+                        <td>Comedy, Drama</td>
+                        <td>PG-13</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/a man called otto.jpg" alt="A Man Called Otto" width="100px" height="150px"/></td>
+                        <td>A Man Called Otto</td>
+                        <td>Comedy, Drama</td>
+                        <td>PG-13</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/avatar the way of the water.jpg" alt="Avatar" width="100px" height="150px"/></td>
+                        <td>Avatar: The Way of the Water</td>
+                        <td>Sci-fi, Action</td>
+                        <td>PG-13</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/knock at the cabin.jpg" alt="Knock at the Cabin" width="100px" height="150px"/></td>
+                        <td>Knock at the Cabin</td>
+                        <td>Horror, Mystery</td>
+                        <td>R</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/magic mike.jpg" alt="Magic Mike" width="100px" height="150px"/></td>
+                        <td>Magic Mike</td>
+                        <td>Comedy, Drama</td>
+                        <td>R</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/MEGAN.jpg" alt="M3GAN" width="100px" height="150px" /></td>
+                        <td>M3GAN</td>
+                        <td>Horror, Sci-fi</td>
+                        <td>PG-13</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/Pathaan.jpg" alt="Pathaan" width="100px" height="150px"/></td>
+                        <td>Pathaan</td>
+                        <td>Action, Thriller</td>
+                        <td>NR</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/puss in boots.jpg" alt="Puss in Boots" width="100px" height="150px"/></td>
+                        <td>Puss in Boots</td>
+                        <td>Adventure, Comedy</td>
+                        <td>PG</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/movie/quantumania.jpg" alt="Quantumania" width="100px" height="150px"/></td>
+                        <td>Quantumania</td>
+                        <td>Action, Adventure</td>
+                        <td>PG-13</td>
+                    </tr>
+                </table>
+                <!--
+                <div class="container">
+                    <div class="search-container">
+                        <label for="search"><b>Search: </b></label>
+                        <br>
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by title..." name="search" class="round" required>
+                    </div>
+                </div>
+                
+                <ul id="myUL">
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/80 for brady.jpg" alt="80 for Brady" width="100px" height="150px"/>
+                            <br>
+                            80 for Brady
+                            <br>
+                            Genre: Comedy, Drama
+                            <br>
+                            Rating: PG-13
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/a man called otto.jpg" alt="A Man Called Otto" width="100px" height="150px"/>
+                            <br>
+                            A Man Called Otto
+                            <br>
+                            Genre: Comedy, Drama
+                            <br>
+                            Rating: PG-13
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/avatar the way of the water.jpg" alt="Avatar" width="100px" height="150px"/>
+                            <br>
+                            Avatar: The Way of the Water
+                            <br>
+                            Genre: Sci-fi, Action
+                            <br>
+                            Rating: PG-13
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/knock at the cabin.jpg" alt="Knock at the Cabin" width="100px" height="150px"/>
+                            <br>
+                            Knock at the Cabin
+                            <br>
+                            Genre: Horror, Mystery
+                            <br>
+                            Rating: R
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/magic mike.jpg" alt="Magic Mike" width="100px" height="150px"/>
+                            <br>
+                            Magic Mike
+                            <br>
+                            Genre: Drama, Comedy
+                            <br>
+                            Rating: R
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/MEGAN.jpg" alt="M3GAN" width="100px" height="150px" />
+                            <br>
+                            M3GAN
+                            <br>
+                            Genre: Horror, Sci-fi
+                            <br>
+                            Rating: PG-13
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/Pathaan.jpg" alt="Pathaan" width="100px" height="150px"/>
+                            <br>
+                            Pathaan
+                            <br>
+                            Genre: Action, Thriller
+                            <br>
+                            Rating: NR
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/puss in boots.jpg" alt="Puss in Boots" width="100px" height="150px"/>
+                            <br>
+                            Puss in Boots
+                            <br>
+                            Genre: Adventure, Comedy
+                            <br>
+                            Rating: PG
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../images/movie/quantumania.jpg" alt="Quantumania" width="100px" height="150px"/>
+                            <br>
+                            Quantumania
+                            <br>
+                            Genre: Action, Adventure
+                            <br>
+                            Rating: PG-13
+                        </a>
+                    </li>
+                </ul>
+            -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
