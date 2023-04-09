@@ -32,8 +32,8 @@ function displayMovies(movie_data)
         let img = document.createElement("img");
         img.src = `${movie_data[i].trailerPicture}`;
         img.alt = `${movie_data[i].title}`;
-        img.width = "400px";
-        img.height = "600px";
+        img.width = 400;
+        img.height = 600;
         let header = document.createElement("h4");
         header.innerHTML = `${movie_data[i].title}`;
         let synopsis = document.createElement("p");
@@ -46,12 +46,30 @@ function displayMovies(movie_data)
         // Appending to "Now Playing" or "Coming Soon" div
         if (movie_data[i].display === "Now Playing") {
             newdiv.appendChild(synopsis);
+            let trailerbtn = document.createElement("a");
+            trailerbtn.href = `${movie_data[i].trailerVideo}`;
+            trailerbtn.setAttribute("type", "button");
+            trailerbtn.class = "trailerbtn";
+            trailerbtn.innerHTML = "Trailer";
+            let bookbtn = document.createElement("a");
+            bookbtn.href = "booking.html";
+            bookbtn.setAttribute("type", "button");
+            bookbtn.class = "bookmovie";
+            bookbtn.innerHTML = "Book Tickets";
+            newdiv.appendChild(trailerbtn);
+            newdiv.appendChild(bookbtn);
             document.getElementById("nowplaying").appendChild(newdiv);
         } else {
             let display = document.createElement("h5");
             display.innerHTML = `${movie_data[i].display}`;
             newdiv.appendChild(display);
             newdiv.appendChild(synopsis);
+            let trailerbtn = document.createElement("a");
+            trailerbtn.href = `${movie_data[i].trailerVideo}`;
+            trailerbtn.setAttribute("type", "button");
+            trailerbtn.class = "trailerbtn"
+            trailerbtn.innerHTML = "Trailer";
+            newdiv.appendChild(trailerbtn);
             document.getElementById("comingsoon").appendChild(newdiv);
         }
     }
