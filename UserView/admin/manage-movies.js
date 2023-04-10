@@ -8,6 +8,10 @@ var socket = null;
  */
 function initialize()
 {
+    fetch("../movie-info.json")
+        .then(response => response.json())
+        .then(data => displayMovies(data));
+
     socket = new WebSocket("ws://127.0.0.1:8888");
     socket.onopen = () => {
         console.log("Connection to server established.");
@@ -39,6 +43,90 @@ function initialize()
         if (localStorage.length > 0) {
             //createMovieElement();
             localStorage.clear();
+        }
+    }
+}
+
+/*
+ * Takes the movie-info and displays it on the homepage.
+ */
+function displayMovies(movie_data)
+{
+    // Iterates through each movie in JSON file
+    for (let i = 0; i < movie_data.length; i++) {
+        // Creates new item-col div
+        let newdiv = document.createElement("div");
+        newdiv.setAttribute("class", "item-col");
+
+        // Adding elements to be displayed on the homepage
+        let img = document.createElement("img");
+        img.src = `../${movie_data[i].trailerPicture}`;
+        img.alt = `${movie_data[i].title}`;
+        img.width = 400;
+        img.height = 600;
+        let header = document.createElement("h4");
+        header.innerHTML = `${movie_data[i].title}`;
+        let synopsis = document.createElement("p");
+        synopsis.innerHTML = `${movie_data[i].synopsis}`;
+
+        // Append items to item-col div
+        newdiv.appendChild(img)
+        newdiv.appendChild(header);
+ 
+        // Appending to "Now Playing" or "Coming Soon" div
+        if (movie_data[i].display === "Now Playing") {
+            newdiv.appendChild(synopsis);
+            let trailerbtn = document.createElement("a");
+            trailerbtn.href = `${movie_data[i].trailerVideo}`;
+            trailerbtn.setAttribute("type", "button");
+            trailerbtn.class = "trailerbtn";
+            trailerbtn.innerHTML = "Trailer";
+            let editbtn = document.createElement("a");
+            editbtn.href = "edit-movies.html";
+            editbtn.setAttribute("type", "button");
+            editbtn.class = "editmovie";
+            editbtn.innerHTML = "Edit";
+            let delbtn = document.createElement("a");
+            delbtn.href = "#";
+            delbtn.setAttribute("type", "button");
+            delbtn.class = "delmovie";
+            delbtn.innerHTML = "Delete";
+            delbtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                deleteMovie();
+            });
+            newdiv.appendChild(trailerbtn);
+            newdiv.appendChild(editbtn);
+            newdiv.appendChild(delbtn);
+            document.getElementById("nowplaying").appendChild(newdiv);
+        } else {
+            let display = document.createElement("h5");
+            display.innerHTML = `${movie_data[i].display}`;
+            newdiv.appendChild(display);
+            newdiv.appendChild(synopsis);
+            let trailerbtn = document.createElement("a");
+            trailerbtn.href = `${movie_data[i].trailerVideo}`;
+            trailerbtn.setAttribute("type", "button");
+            trailerbtn.class = "trailerbtn"
+            trailerbtn.innerHTML = "Trailer";
+            let editbtn = document.createElement("a");
+            editbtn.href = "edit-movies.html";
+            editbtn.setAttribute("type", "button");
+            editbtn.class = "editmovie";
+            editbtn.innerHTML = "Edit";
+            let delbtn = document.createElement("a");
+            delbtn.href = "#";
+            delbtn.setAttribute("type", "button");
+            delbtn.class = "delmovie";
+            delbtn.innerHTML = "Delete";
+            delbtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                deleteMovie();
+            });
+            newdiv.appendChild(trailerbtn);
+            newdiv.appendChild(editbtn);
+            newdiv.appendChild(delbtn);
+            document.getElementById("comingsoon").appendChild(newdiv);
         }
     }
 }
@@ -77,41 +165,6 @@ function logoutAdmin()
 function deleteMovie()
 {
     // todo
-}
-
-function createMovieElement()
-{
-    // Adds new div to movie grid
-    const movieSection = document.getElementsByClassName("now_play_grid");
-    const newMovieDisplay = document.createElement("div");
-    newMovieDisplay.setAttribute("class", "item-col");
-
-    // Adds new movie elements
-    let movieInfo = JSON.parse(localStorage.getItem("newMovie"));
-    const imageDisplay = document.createElement("img");
-    imageDisplay.setAttribute("src", movieInfo.image);
-    imageDisplay.setAttribute("alt", movieInfo.title);
-    imageDisplay.setAttribute("width", "400px");
-    imageDisplay.setAttribute("height", "600px");
-    const titleHeader = document.createElement("h4");
-    titleHeader.innerHTML = movieInfo.title;
-    const description = document.createElement("p");
-    description.innerHTML = movieInfo.synopsis;
-    const trailerDisplay = document.createElement("a");
-    trailerDisplay.setAttribute("href", movieInfo.trailer);
-    trailerDisplay.setAttribute("class", "trailerbtn");
-    trailerDisplay.innerHTML = "Trailer";
-    const bookTicketDisplay = document.createElement("a");
-    bookTicketDisplay.setAttribute("href", "../booking.html");
-    bookTicketDisplay.setAttribute("class", "bookmovie");
-
-    // Adds elements to page
-    newMovieDisplay.appendChild(imageDisplay);
-    newMovieDisplay.appendChild(titleHeader);
-    newMovieDisplay.appendChild(description);
-    newMovieDisplay.appendChild(trailerDisplay);
-    newMovieDisplay.appendChild(bookTicketDisplay);
-    movieSection.appendChild(newMovieDisplay);
 }
 
 window.onload = initialize;

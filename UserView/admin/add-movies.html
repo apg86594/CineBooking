@@ -57,7 +57,7 @@
                             <hr>
                             <div class="content-one">
                                 <label for="reviews" text-align="center">Reviews: </label>
-                                <input type="number" name="reviews" id="reviews" min="0" max="10.0" required placeholder="Enter Reviews (1.0 - 10.0)...">
+                                <input type="number" name="reviews" id="reviews" min="0" max="10.0" step="0.1" required placeholder="Enter Reviews (1.0 - 10.0)...">
                             </div>
                             <hr>
                             <div class="content-one">
@@ -77,7 +77,12 @@
                             <hr>
                             <div class="content-one">
                                 <label for="rating" text-align="center">Rating: </label>
-                                <input type="text" name="rating" id="rating" required placeholder="Enter Rating (PG-13, R, etc.)...">
+                                <select id="rating-select-box" name="select-box" style="width: 25%;">
+                                    <option value="PG">PG</option>
+                                    <option value="PG-13">PG-13</option>
+                                    <option value="R">R</option>
+                                </select>
+                                <!--<input type="text" name="rating" id="rating" required placeholder="Enter Rating (PG, PG-13, or R)...">-->
                             </div>
                             <hr>
                             <div class="content-one">
@@ -88,6 +93,11 @@
                             <div class="content-one">
                                 <label for="prod" text-align="center">Producer: </label>
                                 <input type="text" name="prod" id="prod" required placeholder="Enter Producer's name...">
+                            </div>
+                            <hr>
+                            <div class="content-one" id="releasediv">
+                                <label for="releasediv" text-align="center">Release Date: </label>
+                                <input type="text" name="release" id="release" required placeholder='Enter "Now Playing" or Release Date (Month DD, YYYY)...'>
                             </div>
                         </form>
                     </div>

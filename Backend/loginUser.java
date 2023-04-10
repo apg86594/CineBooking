@@ -10,7 +10,7 @@ public class loginUser {
     private ResultSet results;
     String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
     String username = "root"; // set user name to local server username
-    String password = "Mala0905hello"; // set password to local server password
+    String password = "password123"; // set password to local server password
     final String secretKey = "ylwqc";
     SendEmail email = new SendEmail();
 
