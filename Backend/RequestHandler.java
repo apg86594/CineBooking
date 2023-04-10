@@ -57,6 +57,12 @@ public class RequestHandler {
         } else if (command.equals("SENDPROMOTION")) {
             sendPromotion sendPromotion = new sendPromotion();
             message = sendPromotion.sendPromotionEx(inputs, connection);
+        } else if (command.equals("DELETEMOVIE")) {
+            deleteMovie deleteMovie = new deleteMovie();
+            message = deleteMovie.deleteMovieEx(inputs, connection);
+        } else if (command.equals("EDITMOVIE")) {
+            editMovie editMovie = new editMovie();
+            message = editMovie.editMovieEx(inputs, connection);
         }
         return message;
     } // handleRequest
