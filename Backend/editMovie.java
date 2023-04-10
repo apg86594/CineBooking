@@ -29,7 +29,7 @@ public class editMovie {
             " WHERE movieID = ?";
             
             PreparedStatement preparedStmt = connection.prepareStatement(sql);
-            System.out.print(inputs[11]);
+        
             try {
                 //Sets the values of "question marks" in the SQL statement
                 preparedStmt.setString(1, inputs[1]); // title

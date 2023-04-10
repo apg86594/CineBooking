@@ -65,7 +65,7 @@ function displayMovies(movie_data)
             editbtn.innerHTML = "Edit";
             editbtn.addEventListener("click", (event) => {
                 event.preventDefault();
-                window.location.href = "edit-movies.html";
+                window.location.href = `edit-movies.html?id=${movie_data[i].movieID}`;
             });
             let delbtn = document.createElement("a");
             delbtn.href = "#";
@@ -97,7 +97,7 @@ function displayMovies(movie_data)
             editbtn.innerHTML = "Edit";
             editbtn.addEventListener("click", (event) => {
                 event.preventDefault();
-                window.location.href = "edit-movies.html";
+                window.location.href = `edit-movies.html?id=${movie_data[i].movieId}`;
             });
             let delbtn = document.createElement("a");
             delbtn.href = "#";
