@@ -42,7 +42,7 @@ public class RequestHandler {
         } else if (command.equals("SEARCHINPUT")) {
             searchByInput inputSearch = new searchByInput();
             message = inputSearch.searchByInputExString(inputs, connection);
-        } else if (command.equals("GETSHOWTIMES")) {
+        } else if (command.equals("GETMOVIETIMES")) {
             viewTimes viewTimes = new viewTimes();
             message = viewTimes.timeAndPlace(inputs,connection);
         } else if (command.equals("GETMOVIES")) {
@@ -63,6 +63,12 @@ public class RequestHandler {
         } else if (command.equals("EDITMOVIE")) {
             editMovie editMovie = new editMovie();
             message = editMovie.editMovieEx(inputs, connection);
+        } else if (command.equals("GETSHOWTIMES")) {
+            getShowtimes getShowtimes = new getShowtimes();
+            message = getShowtimes.getShowtimesEx(connection);
+        } else if (command.equals("GETAUDITORIUMS")) {
+            getAuditoriums getAuditoriums = new getAuditoriums();
+            message = getAuditoriums.getAuditoriumsEx(connection);
         }
         return message;
     } // handleRequest

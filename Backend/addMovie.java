@@ -15,7 +15,18 @@ public class addMovie {
         
         //Connects to the database
         try {
-
+            String findDupMovie = "select * from cinemabookingsystem.movie where ? = title";
+            PreparedStatement findDupMovieStmt;
+            try {
+                findDupMovieStmt = connection.prepareStatement(findDupMovie);
+                findDupMovieStmt.setString(1, inputs[1]);
+                results = findDupMovieStmt.executeQuery();
+                if (results.next()) {
+                    return "DUPMOVIE";
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             //Creates the SQL statement
             String sql = "INSERT INTO movie (title, casting, genre, director, producer, duration, synopsis, display, trailerPicture, trailerVideo, review, ratingID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
