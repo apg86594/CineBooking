@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
 		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="mv-styles.css" />
+        <script src="mv-details-script.js"></script>
 		<link rel="icon" href="favicon.ico">
 	</head>
     <body>
@@ -25,10 +26,10 @@
             <div class="col-one">
                 <div class="card-side">
                     <div class="profile-body">
-                        <img src="images/insert-img-here.png" width="300px" height="400px">
+                        <img src="" id="imageUrl" width="300px" height="400px">
                         <div class="user-bar">
-                            <a href="#">Link to Trailer <em>Add link to trailer here</em></a>
-                            <h2>MPAA-US Film Rating: <em>Insert Film Rating here</em></h2>
+                            <a href="booking.html" type="button">Book Tickets</a>
+                            <a href="#" id="trailerUrl" type="button">Trailer</a>
                             <a href="homepage.html">Home</a>
                         </div>
                     </div>
@@ -42,7 +43,7 @@
                                 <h3>Movie Name</h3>
                             </div>
                             <div class="spec-info">
-                                <h4><em>Name of Movie</em></h4>
+                                <h4 id="mvName">Name of Movie</h4>
                             </div>
                         </div>
                         <hr>
@@ -51,7 +52,7 @@
                                 <h3>Category</h3>
                             </div>
                             <div class="spec-info">
-                                <h4><em>Category of Movie</em></h4>
+                                <h4><em id="genre">Category of Movie</em></h4>
                             </div>
                         </div>
                         <hr>
@@ -60,7 +61,7 @@
                                 <h3>Synopsis</h3>
                             </div>
                             <div class="spec-info">
-                                <h4><em>Summary of movie</em></h4>
+                                <h4><em id="syn">Summary of movie</em></h4>
                             </div>
                         </div>
                         <hr>
@@ -69,7 +70,16 @@
                                 <h3>Reviews</h3>
                             </div>
                             <div class="spec-info">
-                                <h4><em>Include 3 reviews</em></h4>
+                                <h4><em id="reviews">Include 3 reviews</em></h4>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content-one">
+                            <div class="profile-setup">
+                                <h3>Rating</h3>
+                            </div>
+                            <div class="spec-info">
+                                <h4><em id="rating">Rating</em></h4>
                             </div>
                         </div>
                         <hr>
@@ -83,7 +93,7 @@
                                         <h3>Cast</h3>
                                     </div>
                                     <div class="spec-info">
-                                        <h4><em>Names of Cast Members</em></h4>
+                                        <h4><em id="casting">Names of Cast Members</em></h4>
                                     </div>
                                 </div>
                                 <div class="content-one">
@@ -91,7 +101,7 @@
                                         <h3>Director(s)</h3>
                                     </div>
                                     <div class="spec-info">
-                                        <h4><em>Names of Director(s)</em></h4>
+                                        <h4><em id="director">Names of Director(s)</em></h4>
                                     </div>
                                 </div>
                                 <div class="content-one">
@@ -99,18 +109,9 @@
                                         <h3>Producer(s)</h3>
                                     </div>
                                     <div class="spec-info">
-                                        <h4><em>Names of Producer(s)</em></h4>
+                                        <h4><em id="producer">Names of Producer(s)</em></h4>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="content-one">
-                            <div class="profile-setup">
-                                <h3>Show Dates and Times</h3>
-                            </div>
-                            <div class="spec-info">
-                                <h4><em>Show Dates and Times here</em></h4>
                             </div>
                         </div>
                     </div>

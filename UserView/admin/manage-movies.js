@@ -21,29 +21,6 @@ function initialize()
             event.preventDefault();
             logoutAdmin();
         });
-
-        const addBtn = document.getElementById("addBtn");
-        addBtn.addEventListener("click", (event) => {
-            event.preventDefault();
-            window.location.href = "add-movies.html";
-        });
-
-        const editBtn = document.getElementById("editBtn");
-        editBtn.addEventListener("click", (event) => {
-            event.preventDefault();
-            window.location.href = "edit-movies.html";
-        });
-
-        const delBtn = document.getElementById("delBtn");
-        delBtn.addEventListener("click", (event) => {
-            event.preventDefault();
-            deleteMovie();
-        });
-
-        if (localStorage.length > 0) {
-            //createMovieElement();
-            localStorage.clear();
-        }
     }
 }
 
@@ -86,6 +63,10 @@ function displayMovies(movie_data)
             editbtn.setAttribute("type", "button");
             editbtn.class = "editmovie";
             editbtn.innerHTML = "Edit";
+            editbtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                window.location.href = `edit-movies.html?id=${movie_data[i].movieID}`;
+            });
             let delbtn = document.createElement("a");
             delbtn.href = "#";
             delbtn.setAttribute("type", "button");
@@ -93,7 +74,7 @@ function displayMovies(movie_data)
             delbtn.innerHTML = "Delete";
             delbtn.addEventListener("click", (event) => {
                 event.preventDefault();
-                deleteMovie();
+                deleteMovie(movie_data[i].movieID);
             });
             newdiv.appendChild(trailerbtn);
             newdiv.appendChild(editbtn);
@@ -101,7 +82,7 @@ function displayMovies(movie_data)
             document.getElementById("nowplaying").appendChild(newdiv);
         } else {
             let display = document.createElement("h5");
-            display.innerHTML = `${movie_data[i].display}`;
+            display.innerHTML = `Release Date: ${movie_data[i].display.toString().replace(':', ',')}`;
             newdiv.appendChild(display);
             newdiv.appendChild(synopsis);
             let trailerbtn = document.createElement("a");
@@ -114,6 +95,10 @@ function displayMovies(movie_data)
             editbtn.setAttribute("type", "button");
             editbtn.class = "editmovie";
             editbtn.innerHTML = "Edit";
+            editbtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                window.location.href = `edit-movies.html?id=${movie_data[i].movieId}`;
+            });
             let delbtn = document.createElement("a");
             delbtn.href = "#";
             delbtn.setAttribute("type", "button");
@@ -121,7 +106,7 @@ function displayMovies(movie_data)
             delbtn.innerHTML = "Delete";
             delbtn.addEventListener("click", (event) => {
                 event.preventDefault();
-                deleteMovie();
+                deleteMovie(movie_data[i].movieID);
             });
             newdiv.appendChild(trailerbtn);
             newdiv.appendChild(editbtn);
@@ -160,11 +145,17 @@ function logoutAdmin()
 }
 
 /*
- *
+ *  Deletes the movie from the database.
  */
-function deleteMovie()
+function deleteMovie(id)
 {
-    // todo
+    socket.send(`DELETEMOVIE,${id}`);
+
+    socket.onmessage = (event) => {
+        console.log(`Delete: ${event.data}`);
+        if (event.data === "SUCCESS")
+            socket.send("GETMOVIES");
+    }
 }
 
 window.onload = initialize;
