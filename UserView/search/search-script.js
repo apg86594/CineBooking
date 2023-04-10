@@ -1,3 +1,43 @@
+function initialize()
+{
+    fetch("../movie-info.json")
+      .then(response => response.json())
+      .then(data => displayMovies(data));
+}
+
+function displayMovies(movie_data)
+{
+    const table = document.getElementById("myTable");
+    for (let i = 0; i < movie_data.length; i++)
+    {
+        const newdiv = document.createElement("tr");
+        const td_img = document.createElement("td");
+        const img = document.createElement("img");
+        img.src = `../${movie_data[i].trailerPicture}`;
+        img.alt = `${movie_data[i].title}`;
+        img.width = 100;
+        img.height = 150;
+        td_img.appendChild(img);
+        const td_title = document.createElement("td");
+        td_title.innerHTML = `${movie_data[i].title}`;
+        const td_genre = document.createElement("td");
+        td_genre.innerHTML = `${movie_data[i].genre}`.replace(/:/g, ', ');
+        const td_rating = document.createElement("td");
+        td_rating.innerHTML = `${movie_data[i].ratingCode}`;
+        newdiv.appendChild(td_img);
+        newdiv.appendChild(td_title);
+        newdiv.appendChild(td_genre);
+        newdiv.appendChild(td_rating);
+        newdiv.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.location.href = `../mv-details.html?id=${movie_data[i].movieID}`;
+        })
+        table.appendChild(newdiv);
+    }
+}
+
+
+
 function myFunction() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
@@ -118,3 +158,5 @@ function myFunctionRating() {
       }
     }
 }
+
+window.onload = initialize;
