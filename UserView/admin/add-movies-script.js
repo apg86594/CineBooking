@@ -18,16 +18,19 @@ function initialize()
 function addMovie()
 {
     const movieName     = document.getElementById("mvName").value;
-    const cast          = document.getElementById("cast").value;
-    const genre         = document.getElementById("genre").value;
+    const cast          = document.getElementById("cast").value.toString().replace(",", ":");
+    const genre         = document.getElementById("genre").value.toString().replace(",", ":");
+    const director      = document.getElementById("director").value;
     const producer      = document.getElementById("prod").value;
     const duration      = document.getElementById("duration").value;
+    const synopsis      = document.getElementById("syn").value.toString().replace(",", ":");
+    const display       = document.getElementById("release").value.toString().replace(",", ":");
     const imageUrl      = document.getElementById("imageUrl").value;
     const trailerUrl    = document.getElementById("trailerUrl").value;
     const reviews       = document.getElementById("reviews").value;
 
     var rating;
-    switch(document.getElementById("rating").value)
+    switch(document.getElementById("rating-select-box").value)
     {
         case "PG":
             rating = "1";
@@ -39,20 +42,15 @@ function addMovie()
             rating = "3";
             break;
     }
-    
 
-    let movieInfo = {
-        title: `${movieName}`, image: `${imageUrl}`, trailer: `${trailerUrl}`, synopsis: `${document.getElementById("syn").value}`
-    };
-    localStorage.setItem("newMovie", JSON.stringify(movieInfo));
-
-    const message = `ADDMOVIE,${movieName},${cast},${genre},${producer},${duration},${imageUrl},${trailerUrl},${reviews},${rating}`;
+    const message = `ADDMOVIE,${movieName},${cast},${genre},${director},${producer},${duration},${synopsis},${display},${imageUrl},${trailerUrl},${reviews},${rating}`;
     socket.send(message);
 
     socket.onmessage = (event) => {
         console.log(event.data);
         if (event.data === "SUCCESS") {
-            window.location.href = "manage-movies.html";
+            socket.send("GETMOVIES");
+            window.location.href = "manage_movies.html";
         }
         socket.close();
     }
