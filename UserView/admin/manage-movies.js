@@ -82,7 +82,7 @@ function displayMovies(movie_data)
             document.getElementById("nowplaying").appendChild(newdiv);
         } else {
             let display = document.createElement("h5");
-            display.innerHTML = `${movie_data[i].display}`;
+            display.innerHTML = `Release Date: ${movie_data[i].display.toString().replace(':', ',')}`;
             newdiv.appendChild(display);
             newdiv.appendChild(synopsis);
             let trailerbtn = document.createElement("a");
