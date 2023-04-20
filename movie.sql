@@ -113,6 +113,10 @@ audName varchar(255),
 noOfSeats int
 );
 
+INSERT INTO AUDITORIUM VALUES(1, 'Viewing Center 1', 40);
+INSERT INTO AUDITORIUM VALUES(2, 'Viewing Center 2', 40);
+INSERT INTO AUDITORIUM VALUES(3, 'Viewing Center 3', 40);
+
 CREATE TABLE IF NOT EXISTS SEAT (
 seatID int,
 PRIMARY KEY (seatID),
