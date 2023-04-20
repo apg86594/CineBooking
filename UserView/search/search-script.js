@@ -1,3 +1,6 @@
+/*
+ * Is called when the window is loaded.
+ */
 function initialize()
 {
     fetch("../movie-info.json")
@@ -5,6 +8,9 @@ function initialize()
       .then(data => displayMovies(data));
 }
 
+/*
+ * Displays all the movies in the search table.
+ */
 function displayMovies(movie_data)
 {
     const table = document.getElementById("myTable");
@@ -36,8 +42,9 @@ function displayMovies(movie_data)
     }
 }
 
-
-
+/*
+ * Adds functionality to the search bar.
+ */
 function myFunction() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
@@ -63,6 +70,9 @@ function myFunction() {
     }
 }
 
+/*
+ * Adds functionality to the search bar.
+ */
 function searchForText() {
   var input, filter, table, tr, td, i, txtValue;
   console.log("Function invoked");
@@ -84,6 +94,11 @@ function searchForText() {
 
 }
 
+/*
+ * Implements search by title, which filters any movies
+ * that do not include the user-provided string. Updates in
+ * real time.
+ */
 function myFunctionTitle() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
@@ -109,6 +124,11 @@ function myFunctionTitle() {
     }
 }
 
+/*
+ * Implements search by genre, which filters any movies
+ * that do not include the user-provided string. Updates in
+ * real time.
+ */
 function myFunctionGenre() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
@@ -134,6 +154,11 @@ function myFunctionGenre() {
     }
 }
 
+/*
+ * Implements search by rating, which filters any movies
+ * that do not include the user-provided string. Updates in
+ * real time.
+ */
 function myFunctionRating() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
