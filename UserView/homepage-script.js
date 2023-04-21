@@ -52,10 +52,13 @@ function displayMovies(movie_data)
             trailerbtn.class = "trailerbtn";
             trailerbtn.innerHTML = "Trailer";
             let bookbtn = document.createElement("a");
-            bookbtn.href = "booking.html";
             bookbtn.setAttribute("type", "button");
             bookbtn.class = "bookmovie";
             bookbtn.innerHTML = "Book Tickets";
+            bookbtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                window.location.href = `booking.html?id=${movie_data[i].movieID}`;
+            })
             newdiv.appendChild(trailerbtn);
             newdiv.appendChild(bookbtn);
             document.getElementById("nowplaying").appendChild(newdiv);

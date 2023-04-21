@@ -47,8 +47,8 @@ form {
 form h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     padding: 40px;
-    text-align: left;
-    font-size: 40px;
+    text-align: center;
+    font-size: 60px;
     color: goldenrod;
 }
 
@@ -63,9 +63,14 @@ form a {
 }
 
 .shop-items {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.auditoriums {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .seat-selection {

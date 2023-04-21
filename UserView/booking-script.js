@@ -1,8 +1,108 @@
-if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready)
-} else {
-    ready()
-    readyTime()
+/* Script for booking.html */
+
+/* 
+IGNORE: NOTE TO SELF
+    - insert showtimes to display showtimes
+    - might need to use movieshow table, unsure yet
+    - work on functions for checking out (& checkout btn)
+    - fix tickets to where there are only 3 types:
+        Child
+        Adult
+        Senior
+    - do something with the seating. reduce to at most 40 seats per auditorium
+*/
+
+var socket = null;
+
+// Grab movieID and dispay already-existing information
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const movieId = urlParams.get('id');
+
+function initialize()
+{
+    fetch("movie-info.json")
+        .then(res => res.json())
+        .then(movie_data => displayMovie(movie_data));
+
+    fetch("auditorium-info.json")
+        .then(res => res.json())
+        .then(aud_data => {
+            // Checks if auditoriums exist
+            if (aud_data == "") {
+                socket = new WebSocket("ws://127.0.0.1:8888");
+                socket.onopen = () => {
+                    console.log("Connected to server. Grabbing auditoriums...");
+                    socket.send("GETAUDITORIUMS");
+                }
+                socket.onmessage = (event) => {
+                    console.log(`GETAUDITORIUMS: ${event.data}`);
+                    socket.close();
+                }
+                socket.onclose = () => {
+                    console.log("Connection closed.");
+                }
+            }
+            displayAuditoriums(aud_data);
+        });
+
+    /*
+    fetch("showtime-info.json")
+        .then(res => res.json())
+        .then(showtime_data => displayShowtimes(showtime_data));
+    */
+}
+
+/*
+ * Displays the selected movie for checkout.
+ */
+function displayMovie(data)
+{
+    let newdiv = document.createElement("div");
+    newdiv.setAttribute("class", "shop-item");
+    let img = document.createElement("img");
+    img.src = `${data[movieId - 1].trailerPicture}`;
+    img.alt = `${data[movieId - 1].title}`;
+    img.width = 400;
+    img.height = 600;
+    newdiv.appendChild(img);
+    document.getElementById("mv_display").appendChild(newdiv);
+}
+
+/*
+ * Displays available auditoriums.
+ */
+function displayAuditoriums(data)
+{
+    let newdiv = document.createElement("div");
+    newdiv.setAttribute("class", "auditoriums");
+    let header = document.createElement("h2");
+    header.innerHTML = "Select an auditorium";
+    newdiv.appendChild(header);
+    for (let i = 0; i < data.length; i++) {
+        let aud_div = document.createElement("div");
+        let checkbox = document.createElement("input");
+        checkbox.setAttribute("class", "single-checkbox");
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.setAttribute("value", "yes");
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            // loop through all other checkboxes and uncheck them
+            let checkboxes = document.querySelectorAll('.single-checkbox');
+            checkboxes.forEach(function(otherCheckbox) {
+              if (otherCheckbox !== checkbox) {
+                otherCheckbox.checked = false;
+              }
+            });
+          }
+        });
+        let label = document.createElement("label");
+        label.innerHTML = `${data[i].audName}`;
+        aud_div.appendChild(checkbox);
+        aud_div.appendChild(label);
+        newdiv.appendChild(aud_div);
+    }
+    document.getElementById("aud_display").appendChild(newdiv);
 }
 
 function ready() {
@@ -161,3 +261,5 @@ function updateCartTimeTotal() {
         var timeElement = cartRow.getElementsByClassName('cart-time')[0]
     } 
 }
+
+window.onload = initialize;

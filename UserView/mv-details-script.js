@@ -20,7 +20,12 @@ function initialize()
             document.getElementById("producer").innerHTML = movie_data[movieId - 1].producer;
             document.getElementById("trailerUrl").href = movie_data[movieId - 1].trailerVideo;
             document.getElementById("imageUrl").src = movie_data[movieId - 1].trailerPicture;
-        })
+
+            document.getElementById("bookingbtn").addEventListener("click", (event) => {
+                event.preventDefault();
+                window.location.href = `booking.html?id=${movieId}`;
+            })
+        });
 }
 
 window.onload = initialize;
