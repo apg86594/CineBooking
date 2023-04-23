@@ -17,12 +17,12 @@ function runCode() {
       //socket.send("LOGOUT");
       //socket.send("SEARCHGENRE,genre");
       //socket.send("SEARCHINPUT,tt123");
-      socket.send("GETMOVIES");
+      //socket.send("GETMOVIES");
       //socket.send("GETMOVIETIMES,2");
       //socket.send("ADDPROMOTION,take15,15");
       //socket.send("GETPROMOTION");
       //socket.send("SENDPROMOTION,take15,15");
-      //socket.send("SCHEDULEMOVIE, 1,1,50,2023-04-06 05:30:00.0")
+      socket.send("SCHEDULEMOVIE,1,1,3,2023-04-06")
       //socket.send("DELETEMOVIE,1");
       //socket.send("EDITMOVIE,testtitle,testcasting,action,gary coleman,gary coleman,1h55m,gary coleman eats a pig,NOW PLAYING,testpic,testvideo,1,1,1");
       //socket.send("GETSHOWTIMES");
