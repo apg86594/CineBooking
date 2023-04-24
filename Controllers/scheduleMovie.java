@@ -2,6 +2,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.function.ToIntFunction;
 
 public class scheduleMovie {
 
@@ -66,7 +68,7 @@ public class scheduleMovie {
             //Creates the sql statement
             String sql = "INSERT INTO movieshow (showID, movieID, auditoriumID, availableSeats, showStart, timeFilled) VALUES (?, ?, ?, ?, ?, ?)";
 
-            PreparedStatement preparedStmt = connection.prepareStatement(sql);
+            PreparedStatement preparedStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             try {
                 //sets the values of the "question marks" in the sql statement
@@ -84,6 +86,36 @@ public class scheduleMovie {
                 return "FAILURE";
             } // try
 
+            /*Get the movie show ID from insertion---------------*/
+            String getMovieID = "select * from cinemabookingsystem.movieshow where ? = showID and ? = showStart and ? = auditoriumID";
+            PreparedStatement getMovieIDStmt = connection.prepareStatement(getMovieID);
+            getMovieIDStmt.setString(1, inputs[1]);
+            getMovieIDStmt.setString(2, inputs[4]);
+            getMovieIDStmt.setString(3, inputs[3]);
+            results = getMovieIDStmt.executeQuery();
+            results.next();
+            String movieShowID = results.getString("movieShowID");
+            /* -------------------------------------------------- */
+
+            /*Get each seatID from the auditorium---------------- */
+            String getSeatIDs = "select * from cinemabookingsystem.audseats where ? = audID";
+            PreparedStatement getSeatIDsStmt = connection.prepareStatement(getSeatIDs);
+            getSeatIDsStmt.setString(1, inputs[3]);
+            results = getSeatIDsStmt.executeQuery();
+            String[] seatIDs = new String[Integer.parseInt(auditoriumSeats)];
+            int index = 0;
+            while(results.next()) {
+                seatIDs[index] = results.getString("seatID");
+                index++;
+            }
+            /* -------------------------------------------------- */
+            String updateSeats = "INSERT INTO movieshowseats (movieShowID, seatID) VALUES (?, ?)";
+            PreparedStatement updateSeatsStmt = connection.prepareStatement(updateSeats);
+            for(int i = 0; i < Integer.parseInt(auditoriumSeats); i++) {
+                updateSeatsStmt.setString(1, movieShowID);
+                updateSeatsStmt.setString(2,seatIDs[i]);
+                updateSeatsStmt.execute();
+            } // for
         } catch (SQLException e) {
             e.printStackTrace();
             return "FAILURE";

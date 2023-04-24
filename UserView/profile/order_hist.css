@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    padding-bottom: 20px;
+}
+nav  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    color: white;
+    background-color: darkred;
+}
+
+.content-one {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+}
+
+.card-side {
+    border-radius: 20px;
+    background-color: darkcyan;
+    color: white;
+    height: 100%;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+  
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+  
+.nav-item a {
+    padding: 0px 20px;
+    text-decoration: none;
+    color: white; 
+}
+
+.nav-item:hover {
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.banner {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: left;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    background-color:black;
+}
+  
+.banner h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 3px 3px 4px goldenrod;
+    padding: 15px;
+    text-align: left;
+    font-size: 40px;
+    color: teal;
+}
+  
+.tint-one {
+    text-align: center;
+    background-color: black;
+    color:white;
+    padding-top: 20px;
+}
+
+.now_play_grid {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.ban-table {
+    align-items: left;
+    padding-left: 50px;
+}
+
+input[type=text] {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0 0 0;
+    display: inline;
+    border: none;
+    background: #f1f1f1;
+}
+
+#myInput {
+    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+  }
+  
+  #myTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #myTable th, #myTable td {
+    text-align: center; /* Left-align text */
+    padding: 12px; /* Add padding */
+  }
+  
+  #myTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: darkred;
+  }
+
+footer {
+    padding-bottom: 20px;
+}
+  
+  /**************** create a verticle layout for mobile devices (smaller than 600px ).    *********/
+  @media all and (max-width: 600px) {
+    .now_play_grid {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .quad-col {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-links {
+      flex-direction: column;
+      text-align: center;
+      padding: 0px;
+    }
+  }

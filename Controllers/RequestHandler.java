@@ -69,6 +69,9 @@ public class RequestHandler {
         } else if (command.equals("GETAUDITORIUMS")) {
             getAuditoriums getAuditoriums = new getAuditoriums();
             message = getAuditoriums.getAuditoriumsEx(connection);
+        } else if (command.equals("GETAUDITORIUMSEATS")) {
+            getAuditoriumSeats getAuditoriumSeats = new getAuditoriumSeats();
+            message = getAuditoriumSeats.getAuditoriumSeatsEx(inputs, connection);
         }
         return message;
     } // handleRequest
