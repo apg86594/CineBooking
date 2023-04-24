@@ -124,9 +124,9 @@ h4 {
 }
 
 .col-one {
-    position: relative;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .spec-info {
@@ -138,6 +138,45 @@ h4 {
 .slide-two {
     background-color: black;
     padding-bottom: 30px;
+}
+
+.display-info {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    background-color: darkred;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+  
+button:hover {
+    background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    color: black;
+}
+  
+button:hover a {
+    background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
 }
 
 input[type=text], input[type=password], input[type=number] {

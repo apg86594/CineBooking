@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
 		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="man_mv_styles.css" />
+        <script src="sch-movies-script.js"></script>
         <link rel="icon" href="favicon.ico">
 	</head>
     <body>
@@ -21,35 +22,30 @@
         <div class="banner">
             <h1>Schedule Movie</h1>
         </div>
-        <div class="content-one">
             <div class="col-one">
-                <div class="card-side">
-                    <div class="profile-body">
-                        <div class="user-bar">
-                            <h2>Movie Name</h2> 
-                            <input type="text" id="movieName" placeholder="Enter Movie Name...">
-                            
+                <form action="#"></form>
+                    <div class="card-side">
+                        <div class="profile-body">
+                            <div class="user-bar">
+                                <h2>Movie Name</h2> 
+                                <input type="text" id="movieName" placeholder="Enter Movie Name..."> 
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-one">
-                <div class="slide-two">
-                    <div class="profile-body">
-                        <form action="#">
-                            <div class="content-one">
-                                <label for="mvTimes" text-align="center">Movie Times: </label>
-                                <input type="text" name="mvTimes" id="mvTimes" required placeholder="Enter Movie Times...">
-                            </div>
-                            <hr>
-                            <div class="content-one">
-                                <label for="theater" text-align="center">Theater: </label>
-                                <input type="text" name="theater" id="theater" required placeholder="Enter Movie Theater...">
-                            </div>
-                        </form>
+                    <div class="slide-two">
+                        <div class="profile-body">
+                            <div class="display-info" id="show-info"></div>
+                            <div class="display-info" id="aud-info"></div>
+                        </div>
+                        <div class="date">
+                            <br>
+                            <label for="datePicker">Select a date:</label>
+                            <input type="date" id="datePicker" name="datePicker">
+                            <br>
+                        </div>
+                        <button type="submit" id="schedulebtn">Schedule</button>
                     </div>
-                </div>
+                </form>
             </div>
-        </div>
     </body>
 </html>
