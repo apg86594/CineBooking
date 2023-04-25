@@ -78,6 +78,12 @@ public class RequestHandler {
         } else if (command.equals("BOOKMOVIE")) {
             bookMovie bookMovie = new bookMovie();
             message = bookMovie.bookMovieEx(inputs, connection);
+        } else if (command.equals("GETUSERS")) {
+            getUsers getUsers = new getUsers();
+            message = getUsers.getUsersEx(connection);
+        } else if (command.equals("GETPLAYINGMOVIES")) {
+            getPlayingMovies getPlayingMovies = new getPlayingMovies();
+            message = getPlayingMovies.getPlayingMoviesEx(connection);
         }
         return message;
     } // handleRequest
