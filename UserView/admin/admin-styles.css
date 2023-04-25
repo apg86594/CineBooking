@@ -232,6 +232,16 @@ button:hover a {
 footer {
     padding-bottom: 20px;
 }
+
+.addPromoDiv {
+    display: none;
+}
+
+.addPromoDiv button {
+    text-align: center;
+    padding-left: 30px;
+    width: 20%;
+}
   
   /**************** create a verticle layout for mobile devices (smaller than 600px ).    *********/
   @media all and (max-width: 600px) {
