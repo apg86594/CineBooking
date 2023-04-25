@@ -188,6 +188,7 @@ FOREIGN KEY (movieShowID) REFERENCES MOVIESHOW (movieShowID),
 noChildTickets int,
 noAdultTickets int,
 noSeniorTickets int,
+seatIDs varChar(255),
 totalPrice float,
 promoID int
 );
