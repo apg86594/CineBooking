@@ -25,9 +25,12 @@ public class getOrderHistory {
                 results.next();
                 jsonObject[i] = new JSONObject();
                 jsonObject[i].put("bookingID", results.getString("bookingID"));
+                jsonObject[i].put("userID", results.getString("userID"));
                 jsonObject[i].put("movieShowID", results.getString("movieShowID"));
-                jsonObject[i].put("noTickets", results.getString("noTickets"));
-                jsonObject[i].put("ticketID", results.getString("ticketID"));
+                jsonObject[i].put("noChildTickets", results.getString("noChildTickets"));
+                jsonObject[i].put("noAdultTickets", results.getString("noAdultTickets"));
+                jsonObject[i].put("noSeniorTickets", results.getString("noSeniorTickets"));
+                jsonObject[i].put("seatIDs", results.getString("seatIDs"));
                 jsonObject[i].put("totalPrice", results.getString("totalPrice"));
                 jsonObject[i].put("promoID", results.getString("promoID"));
                 jsonArray.add(jsonObject[i]);

@@ -27,7 +27,7 @@ public class scheduleMovie {
             PreparedStatement findMovieIDStmt = connection.prepareStatement(findMovieID);
 
             //sets the value of the question mark in the find show statement
-            findMovieIDStmt.setString(1, inputs[1]);
+            findMovieIDStmt.setString(1, inputs[2]);
 
             results = findMovieIDStmt.executeQuery();
             //checks to see if that movieID exists

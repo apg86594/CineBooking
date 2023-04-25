@@ -6,7 +6,7 @@ function runCode() {
 
     socket.onopen = function(e) {
       console.log("[open] Connection established");
-      console.log("Sending to server");
+      //console.log("Sending to server");
       //socket.send("REGISTER,test123,charlie,skinner,chuckskined@gmail.com,2, billline1,billline2,billzip,billcity,billstate,shipline1,shipline2,shipzip,shipcity,shipstate,12345,123,01,02,0");
       //socket.send("LOGIN,chuckskined@gmail.com,test123");
       //socket.send("EDIT,charleys,o'briens,chuckskined@gmail.com,2,newbill1,newbil2,newbzip,newbcity,newbstate,news1,news2,newszip,newscity,newsstate,1111,000,5,7,0");
@@ -18,18 +18,18 @@ function runCode() {
       //socket.send("SEARCHGENRE,genre");
       //socket.send("SEARCHINPUT,tt123");
       //socket.send("GETMOVIES");
-      //socket.send("GETMOVIETIMES,2");
+      //socket.send("GETMOVIETIMES,1");
       //socket.send("ADDPROMOTION,take15,15");
       //socket.send("GETPROMOTION");
       //socket.send("SENDPROMOTION,take15,15");
-      //socket.send("SCHEDULEMOVIE,1,1,1,2023-04-06")
+      //socket.send("SCHEDULEMOVIE,1,1,2,2023-04-06")
       //socket.send("DELETEMOVIE,1");
       //socket.send("EDITMOVIE,testtitle,testcasting,action,gary coleman,gary coleman,1h55m,gary coleman eats a pig,NOW PLAYING,testpic,testvideo,1,1,1");
       //socket.send("GETSHOWTIMES");
       //socket.send("GETAUDITORIUMS");
       //socket.send("GETAUDITORIUMSEATS,4")
       //socket.send("GETORDERHISTORY,1");
-      socket.send("BOOKMOVIE,1,2,1,0,2,60,1,2:3:4");
+      //socket.send("BOOKMOVIE,1,2,1,0,2,60,1,2:3:4");
     };
     
     socket.onmessage = function(event) {
