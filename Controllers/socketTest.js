@@ -28,7 +28,8 @@ function runCode() {
       //socket.send("GETSHOWTIMES");
       //socket.send("GETAUDITORIUMS");
       //socket.send("GETAUDITORIUMSEATS,4")
-      socket.send("GETORDERHISTORY,1");
+      //socket.send("GETORDERHISTORY,1");
+      socket.send("BOOKMOVIE,1,2,1,0,2,60,1");
     };
     
     socket.onmessage = function(event) {
