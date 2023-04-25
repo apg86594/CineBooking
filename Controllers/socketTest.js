@@ -27,7 +27,9 @@ function runCode() {
       //socket.send("EDITMOVIE,testtitle,testcasting,action,gary coleman,gary coleman,1h55m,gary coleman eats a pig,NOW PLAYING,testpic,testvideo,1,1,1");
       //socket.send("GETSHOWTIMES");
       //socket.send("GETAUDITORIUMS");
-      socket.send("GETAUDITORIUMSEATS,4")
+      //socket.send("GETAUDITORIUMSEATS,4")
+      //socket.send("GETORDERHISTORY,1");
+      socket.send("BOOKMOVIE,1,2,1,0,2,60,1,2:3:4");
     };
     
     socket.onmessage = function(event) {

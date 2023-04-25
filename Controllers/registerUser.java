@@ -67,7 +67,6 @@ public class registerUser {
                 e.printStackTrace();
                 return "FAILURE";
             } // try
-            //email.sendEmail(inputs[4],randomNumber);
             
         return "SUCCESS";
     }

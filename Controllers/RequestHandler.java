@@ -72,6 +72,12 @@ public class RequestHandler {
         } else if (command.equals("GETAUDITORIUMSEATS")) {
             getAuditoriumSeats getAuditoriumSeats = new getAuditoriumSeats();
             message = getAuditoriumSeats.getAuditoriumSeatsEx(inputs, connection);
+        } else if (command.equals("GETORDERHISTORY")) {
+            getOrderHistory getOrderHistory = new getOrderHistory();
+            message = getOrderHistory.getOrdersEx(inputs, connection);
+        } else if (command.equals("BOOKMOVIE")) {
+            bookMovie bookMovie = new bookMovie();
+            message = bookMovie.bookMovieEx(inputs, connection);
         }
         return message;
     } // handleRequest
