@@ -95,6 +95,12 @@ function handleLoginError(message)
         case "NOTACTIVE":
             const _errorElem = document.getElementById("error-message");
             _errorElem.innerHTML = "Please confirm registration before logging in. Check your email for a confirmation code.";
+            const redirect = document.createElement("button");
+            redirect.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.location.href = "confirmation.html";
+            })
+            _errorElem.appendChild(redirect);
             break;
     }
 }
