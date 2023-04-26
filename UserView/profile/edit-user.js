@@ -68,20 +68,7 @@ function editUser(user_data)
     results += ",";
     results += user_data.email;
     results += ",";
-
-    switch (user_data.userType)
-    {
-        case "ADMIN":
-            results += "1";
-            break;
-        case "CUSTOMER":
-            results += "2";
-            break;
-        case "EMPLOYEE":
-            results += "3";
-            break;
-    }
-
+    results += user_data.userType;
     results += ",";
     results += user_data.billingAddressLine1 !== billingAddr1 && billingAddr1 !== "" ? billingAddr1 : user_data.billingAddressLine1;
     results += ",";
