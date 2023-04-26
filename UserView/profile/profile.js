@@ -1,5 +1,7 @@
 /* Script for profile.html */
 
+var socket = null;
+
 /*
  * Called when the webpage is loaded. Retrieves user's
  * information from login-user-info.json and passes that
@@ -9,7 +11,24 @@ function initialize()
 {
     fetch("../login-user-info.json")
         .then(response => response.json())
-        .then(data => displayInfo(data));
+        .then(data => {
+            displayInfo(data);
+            const orderHistBtn = document.getElementById("order-hist");
+            orderHistBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                socket = new WebSocket("ws://127.0.0.1:8888");
+                socket.onopen = () => {
+                    socket.send(`GETORDERHISTORY,${data.userID}`);
+                }
+                socket.onmessage = (e) => {
+                    console.log(e.data);
+                    if (e.data.toString().toUpperCase() === "SUCCESS") {
+                        window.location.href = `order_hist.html?id=${data.userID}`;
+                    }
+                    socket.close();
+                }
+            });
+        });
 }
 
 /*
@@ -56,13 +75,13 @@ function displayInfo(user_data)
     }
     
     // Display shipping info
-    const shipping = `${user_data.shippingAddressLine1} ${user_data.shippingAddressLine2} ${shppingCity} ${shippingState} ${shippingZip}`;
+    const shipping = `${user_data.shippingAddressLine1} ${user_data.shippingAddressLine2} ${user_data.shippingCity} ${user_data.shippingState} ${user_data.shippingZip}`;
     if (shipping !== "") {
         document.getElementById("shipping_addr").innerHTML = shipping;
     }
 
     // Display billing info
-    const billing = `${user_data.billingAddressLine1} ${user_data.billingAddressLine2} ${billingCity} ${billingState} ${billingZip}`;
+    const billing = `${user_data.billingAddressLine1} ${user_data.billingAddressLine2} ${user_data.billingCity} ${user_data.billingState} ${user_data.billingZip}`;
     if (billing !== shipping) {
         document.getElementById("billing_addr").innerHTML = billing;
     }
