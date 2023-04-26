@@ -126,11 +126,83 @@ FOREIGN KEY (audID) REFERENCES AUDITORIUM (audID),
 isBooked int
 );
 
+INSERT INTO SEAT VALUES(1, 1, 0);
+INSERT INTO SEAT VALUES(2, 1, 0);
+INSERT INTO SEAT VALUES(3, 1, 0);
+INSERT INTO SEAT VALUES(4, 1, 0);
+INSERT INTO SEAT VALUES(5, 1, 0);
+INSERT INTO SEAT VALUES(6, 1, 0);
+INSERT INTO SEAT VALUES(7, 1, 0);
+INSERT INTO SEAT VALUES(8, 1, 0);
+INSERT INTO SEAT VALUES(9, 1, 0);
+INSERT INTO SEAT VALUES(10, 1, 0);
+INSERT INTO SEAT VALUES(11, 1, 0);
+INSERT INTO SEAT VALUES(12, 1, 0);
+INSERT INTO SEAT VALUES(13, 1, 0);
+INSERT INTO SEAT VALUES(14, 1, 0);
+INSERT INTO SEAT VALUES(15, 1, 0);
+INSERT INTO SEAT VALUES(16, 1, 0);
+INSERT INTO SEAT VALUES(17, 1, 0);
+INSERT INTO SEAT VALUES(18, 1, 0);
+INSERT INTO SEAT VALUES(19, 1, 0);
+INSERT INTO SEAT VALUES(20, 1, 0);
+INSERT INTO SEAT VALUES(21, 2, 0);
+INSERT INTO SEAT VALUES(22, 2, 0);
+INSERT INTO SEAT VALUES(23, 2, 0);
+INSERT INTO SEAT VALUES(24, 2, 0);
+INSERT INTO SEAT VALUES(25, 2, 0);
+INSERT INTO SEAT VALUES(26, 2, 0);
+INSERT INTO SEAT VALUES(27, 2, 0);
+INSERT INTO SEAT VALUES(28, 2, 0);
+INSERT INTO SEAT VALUES(29, 2, 0);
+INSERT INTO SEAT VALUES(30, 2, 0);
+INSERT INTO SEAT VALUES(31, 2, 0);
+INSERT INTO SEAT VALUES(32, 2, 0);
+INSERT INTO SEAT VALUES(33, 2, 0);
+INSERT INTO SEAT VALUES(34, 2, 0);
+INSERT INTO SEAT VALUES(35, 2, 0);
+INSERT INTO SEAT VALUES(36, 2, 0);
+INSERT INTO SEAT VALUES(37, 2, 0);
+INSERT INTO SEAT VALUES(38, 2, 0);
+INSERT INTO SEAT VALUES(39, 2, 0);
+INSERT INTO SEAT VALUES(40, 2, 0);
+INSERT INTO SEAT VALUES(41, 3, 0);
+INSERT INTO SEAT VALUES(42, 3, 0);
+INSERT INTO SEAT VALUES(43, 3, 0);
+INSERT INTO SEAT VALUES(44, 3, 0);
+INSERT INTO SEAT VALUES(45, 3, 0);
+INSERT INTO SEAT VALUES(46, 3, 0);
+INSERT INTO SEAT VALUES(47, 3, 0);
+INSERT INTO SEAT VALUES(48, 3, 0);
+INSERT INTO SEAT VALUES(49, 3, 0);
+INSERT INTO SEAT VALUES(50, 3, 0);
+INSERT INTO SEAT VALUES(51, 3, 0);
+INSERT INTO SEAT VALUES(52, 3, 0);
+INSERT INTO SEAT VALUES(53, 3, 0);
+INSERT INTO SEAT VALUES(54, 3, 0);
+INSERT INTO SEAT VALUES(55, 3, 0);
+INSERT INTO SEAT VALUES(56, 3, 0);
+INSERT INTO SEAT VALUES(57, 3, 0);
+INSERT INTO SEAT VALUES(58, 3, 0);
+INSERT INTO SEAT VALUES(59, 3, 0);
+INSERT INTO SEAT VALUES(60, 3, 0);
+
 CREATE TABLE IF NOT EXISTS SHOWTIMES (
 showID int,
 PRIMARY KEY (showID),
 timeStamp time
 );
+
+INSERT INTO SHOWTIMES VALUES (1, '13:30:00');
+INSERT INTO SHOWTIMES VALUES (2, '14:00:00');
+INSERT INTO SHOWTIMES VALUES (3, '12:00:00');
+INSERT INTO SHOWTIMES VALUES (4, '22:00:00');
+INSERT INTO SHOWTIMES VALUES (5, '16:00:00');
+INSERT INTO SHOWTIMES VALUES (6, '18:30:00');
+INSERT INTO SHOWTIMES VALUES (7, '14:30:00');
+INSERT INTO SHOWTIMES VALUES (8, '23:00:00');
+INSERT INTO SHOWTIMES VALUES (9, '20:00:00');
+INSERT INTO SHOWTIMES VALUES (10, '10:30:00');
 
 CREATE TABLE IF NOT EXISTS MOVIESHOW (
 movieShowID int NOT NULL AUTO_INCREMENT,
@@ -200,27 +272,66 @@ promotionCode varChar(255),
 percentOff int
 );
 
-INSERT INTO PROMOTIONS VALUES(1, "NOPROMO",0);
 INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (1,1,'A',1);
 INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (2,1,'A',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (3,1,'B',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (4,1,'B',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (5,1,'C',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (6,1,'C',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (7,1,'D',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (8,1,'D',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (9,1,'E',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (10,1,'E',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (11,2,'A',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (12,2,'A',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (13,2,'B',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (14,2,'B',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (15,2,'C',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (16,2,'C',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (17,2,'D',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (18,2,'D',2);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (19,2,'E',1);
-INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (20,2,'E',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (3,1,'A',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (4,1,'A',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (5,1,'A',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (6,1,'B',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (7,1,'B',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (8,1,'B',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (9,1,'B',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (10,1,'B',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (11,1,'C',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (12,1,'C',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (13,1,'C',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (14,1,'C',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (15,1,'C',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (16,1,'D',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (17,1,'D',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (18,1,'D',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (19,1,'D',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (20,1,'D',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (21,2,'A',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (22,2,'A',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (23,2,'A',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (24,2,'A',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (25,2,'A',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (26,2,'B',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (27,2,'B',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (28,2,'B',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (29,2,'B',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (30,2,'B',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (31,2,'C',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (32,2,'C',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (33,2,'C',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (34,2,'C',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (35,2,'C',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (36,2,'D',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (37,2,'D',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (38,2,'D',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (39,2,'D',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (40,2,'D',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (41,3,'A',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (42,3,'A',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (43,3,'A',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (44,3,'A',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (45,3,'A',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (46,3,'B',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (47,3,'B',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (48,3,'B',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (49,3,'B',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (50,3,'B',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (51,3,'C',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (52,3,'C',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (53,3,'C',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (54,3,'C',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (55,3,'C',5);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (56,3,'D',1);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (57,3,'D',2);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (58,3,'D',3);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (59,3,'D',4);
+INSERT INTO AUDSEATS (`seatID`,`audID`,`sectionRow`,`sectionCol`) VALUES (60,3,'D',5);
 
 
 
