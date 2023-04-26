@@ -12,16 +12,17 @@ function initialize()
         .then(response => response.json())
         .then(data => displayMovies(data));
 
-    socket = new WebSocket("ws://127.0.0.1:8888");
-    socket.onopen = () => {
-        console.log("Connection to server established.");
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        logoutAdmin();
+    });
 
-        const logoutBtn = document.getElementById("logoutBtn");
-        logoutBtn.addEventListener("click", (event) => {
-            event.preventDefault();
-            logoutAdmin();
-        });
-    }
+    const viewusers = document.getElementById("viewusers");
+    viewusers.addEventListener("click", (e) => {
+        e.preventDefault();
+        getUsers();
+    });
 }
 
 /*
@@ -122,7 +123,11 @@ function displayMovies(movie_data)
  */
 function logoutAdmin()
 {
-    socket.send("LOGOUT");
+    socket = new WebSocket("ws://127.0.0.1:8888");
+    socket.onopen = () => {
+        console.log("Connection to server established.");
+        socket.send("LOGOUT");
+    }
 
     socket.onmessage = (event) => {
         console.log(event.data);
@@ -149,12 +154,36 @@ function logoutAdmin()
  */
 function deleteMovie(id)
 {
-    socket.send(`DELETEMOVIE,${id}`);
+    socket = new WebSocket("ws://127.0.0.1:8888");
+    socket.onopen = () => {
+        console.log("Connection to server established.");
+        socket.send(`DELETEMOVIE,${id}`);
+    }
 
     socket.onmessage = (event) => {
         console.log(`Delete: ${event.data}`);
-        if (event.data === "SUCCESS")
+        if (event.data === "SUCCESS") {
             socket.send("GETMOVIES");
+        }
+        socket.close();
+    }
+}
+
+/*
+ * Gets users before leaving page.
+ */
+function getUsers()
+{
+    socket = new WebSocket("ws://127.0.0.1:8888");
+    socket.onopen = () => {
+        socket.send("GETUSERS")
+    }
+    socket.onmessage = (e) => {
+        console.log(e.data);
+        if (e.data === "SUCCESS") {
+            window.location.href = "manage_users.html";
+        }
+        socket.close();
     }
 }
 

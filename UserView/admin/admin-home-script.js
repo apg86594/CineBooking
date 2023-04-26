@@ -11,15 +11,17 @@ function initialize()
         .then(response => response.json())
         .then(data => displayMovies(data));
     
-    socket = new WebSocket("ws://127.0.0.1:8888");
-    socket.onopen = () => {
-        console.log("Connection to server established.");
-        const button = document.getElementById("logoutBtn");
-        button.addEventListener("click", (event) => {
-            event.preventDefault();
-            logoutAdmin();
-        });
-    }
+    const button = document.getElementById("logoutBtn");
+    button.addEventListener("click", (event) => {
+        event.preventDefault();
+        logoutAdmin();
+    });
+
+    const viewusers = document.getElementById("viewusers");
+    viewusers.addEventListener("click", (e) => {
+        e.preventDefault();
+        getUsers();
+    });
 }
 
 /*
@@ -80,7 +82,11 @@ function displayMovies(movie_data)
  */
 function logoutAdmin()
 {
-    socket.send("LOGOUT");
+    socket = new WebSocket("ws://127.0.0.1:8888");
+    socket.onopen = () => {
+        console.log("Connection to server established.");
+        socket.send("LOGOUT");
+    }
 
     socket.onmessage = (event) => {
         console.log(event.data);
@@ -99,6 +105,24 @@ function logoutAdmin()
 
     socket.onclose = (event) => {
         console.log("WebSocket connection closed with code:", event.code);
+    }
+}
+
+/*
+ * Gets users before leaving page.
+ */
+function getUsers()
+{
+    socket = new WebSocket("ws://127.0.0.1:8888");
+    socket.onopen = () => {
+        socket.send("GETUSERS")
+    }
+    socket.onmessage = (e) => {
+        console.log(e.data);
+        if (e.data === "SUCCESS") {
+            window.location.href = "manage_users.html";
+        }
+        socket.close();
     }
 }
 

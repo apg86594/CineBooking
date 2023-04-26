@@ -27,6 +27,12 @@ function initialize()
             event.preventDefault();
             logoutAdmin();
         });
+
+        const viewusers = document.getElementById("viewusers");
+        viewusers.addEventListener("click", (e) => {
+            e.preventDefault();
+            getUsers();
+        });
     }
 }
 
@@ -115,6 +121,24 @@ function sendPromo()
 
     socket.onmessage = (event) => {
         console.log(event.data);
+    }
+}
+
+/*
+ * Gets users before leaving page.
+ */
+function getUsers()
+{
+    socket = new WebSocket("ws://127.0.0.1:8888");
+    socket.onopen = () => {
+        socket.send("GETUSERS")
+    }
+    socket.onmessage = (e) => {
+        console.log(e.data);
+        if (e.data === "SUCCESS") {
+            window.location.href = "manage_users.html";
+        }
+        socket.close();
     }
 }
 
