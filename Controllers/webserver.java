@@ -21,7 +21,7 @@ public class webserver extends WebSocketServer {
     Connection connection;
     String url = "jdbc:MySQL://localhost:3306/cinemabookingsystem"; // change port if server is on different port
     String username = "root"; // set user name to local server username
-    String password = "Test123"; // set password to local server password
+    String password = "password123"; // set password to local server password
 
     public webserver() {
         super(new InetSocketAddress("127.0.0.1",TCP_PORT));
