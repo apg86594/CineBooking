@@ -30,7 +30,7 @@ public class getUsers {
                     findPrivilegesStmt.setString(1, privileges);
                     tempResults = findPrivilegesStmt.executeQuery();
                     tempResults.next();
-                    String userType = tempResults.getString("UserTypeName");
+                    String userType = results.getString("USERTYPE");
                     String email = results.getString("email");
                     String userID = results.getString("userID");
                     String password = encrypter.decrypt(results.getString("password"),secretKey);
