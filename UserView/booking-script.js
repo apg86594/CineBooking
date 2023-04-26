@@ -273,7 +273,27 @@ async function bookMovie()
     }
     var seatIDs = "";
     for (let i = 0; i < keys.length; i++) {
-        seatIDs += keys[i];
+        if (keys[i] === "1A") {
+            seatIDs += "1";
+        } else if (keys[i] === "2A") {
+            seatIDs += "2";
+        } else if (keys[i] === "3A") {
+            seatIDs += "3";
+        } else if (keys[i] === "4A") {
+            seatIDs += "4";
+        } else if (keys[i] === "5A") {
+            seatIDs += "5";
+        } else if (keys[i] === "1B") {
+            seatIDs += "6";
+        } else if (keys[i] === "2B") {
+            seatIDs += "7";
+        } else if (keys[i] === "3B") {
+            seatIDs += "8";
+        } else if (keys[i] === "4B") {
+            seatIDs += "9";
+        } else if (keys[i] === "5B") {
+            seatIDs += "10";
+        }
         if (i !== keys.length - 1)
             seatIDs += ":";
     }
