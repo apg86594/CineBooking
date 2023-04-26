@@ -7,7 +7,7 @@ function runCode() {
     socket.onopen = function(e) {
       console.log("[open] Connection established");
       //console.log("Sending to server");
-      //socket.send("REGISTER,test123,charlie,skinner,chuckskined@gmail.com,2, billline1,billline2,billzip,billcity,billstate,shipline1,shipline2,shipzip,shipcity,shipstate,12345,123,01,02,0");
+      //socket.send("REGISTER,test123,charlie,skinner,chuckskined@gmai.com,2, billline1,billline2,billzip,billcity,billstate,shipline1,shipline2,shipzip,shipcity,shipstate,12345,123,01,02,0");
       //socket.send("LOGIN,chuckskined@gmail.com,test123");
       //socket.send("EDIT,charleys,o'briens,chuckskined@gmail.com,2,newbill1,newbil2,newbzip,newbcity,newbstate,news1,news2,newszip,newscity,newsstate,1111,000,5,7,0");
       //socket.send("CONFIRM,chuckskined@gmail.com,14300");
@@ -30,6 +30,8 @@ function runCode() {
       //socket.send("GETAUDITORIUMSEATS,4")
       //socket.send("GETORDERHISTORY,1");
       //socket.send("BOOKMOVIE,1,2,1,0,2,60,1,2:3:4");
+      //socket.send("GETUSERS");
+      socket.send("GETPLAYINGMOVIES");
     };
     
     socket.onmessage = function(event) {
