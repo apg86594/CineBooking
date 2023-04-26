@@ -22,7 +22,7 @@ function runCode() {
       //socket.send("ADDPROMOTION,take15,15");
       //socket.send("GETPROMOTION");
       //socket.send("SENDPROMOTION,take15,15");
-      //socket.send("SCHEDULEMOVIE,1,1,2,2023-04-06")
+      socket.send("SCHEDULEMOVIE,1,10,2,2023-04-07")
       //socket.send("DELETEMOVIE,1");
       //socket.send("EDITMOVIE,testtitle,testcasting,action,gary coleman,gary coleman,1h55m,gary coleman eats a pig,NOW PLAYING,testpic,testvideo,1,1,1");
       //socket.send("GETSHOWTIMES");
@@ -31,7 +31,7 @@ function runCode() {
       //socket.send("GETORDERHISTORY,1");
       //socket.send("BOOKMOVIE,1,2,1,0,2,60,1,2:3:4");
       //socket.send("GETUSERS");
-      socket.send("GETPLAYINGMOVIES");
+      //socket.send("GETPLAYINGMOVIES");
     };
     
     socket.onmessage = function(event) {

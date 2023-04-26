@@ -116,6 +116,14 @@ public class scheduleMovie {
                 updateSeatsStmt.setString(2,seatIDs[i]);
                 updateSeatsStmt.execute();
             } // for
+
+            /*Set movie to now playing---------------------------- */
+            String setMovieNowPlaying = "UPDATE movie SET display='Now Playing' WHERE movieID = ?";
+            PreparedStatement setMovieNowPlayingStmt = connection.prepareStatement(setMovieNowPlaying);
+            setMovieNowPlayingStmt.setString(1, inputs[2]);
+            setMovieNowPlayingStmt.executeUpdate();
+            /*---------------------------------------------------- */
+            
         } catch (SQLException e) {
             e.printStackTrace();
             return "FAILURE";

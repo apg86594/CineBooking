@@ -78,7 +78,7 @@ function displayMovies(movie_data)
             });
             newdiv.appendChild(trailerbtn);
             newdiv.appendChild(editbtn);
-            newdiv.appendChild(delbtn);
+            //newdiv.appendChild(delbtn);
             document.getElementById("nowplaying").appendChild(newdiv);
         } else {
             let display = document.createElement("h5");
