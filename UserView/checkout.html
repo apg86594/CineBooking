@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lobster&display=swap" rel="stylesheet">   
 		<script src="https://kit.fontawesome.com/6696ae9e56.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="checkout-styles.css" />
+        <script src="checkout-script.js"></script>
 		<link rel="icon" href="favicon.ico">
     </head>
     <body>
@@ -27,7 +28,9 @@
                     <div class="form-card">
                         <form action="#">
                             <div class="row">
-                                <div class="col-50">
+                                <input type="checkbox" id="usercard" value="yes">
+                                <label for="usercard">Use payment info on file?</label>
+                                <div class="col-50" id="paymentcol">
                                     <h3>Payment</h3>
                                     <label for="fname">Accepted Cards</label>
                                     <div class="icon-container">
@@ -39,17 +42,17 @@
                                     <div class="form-checkout">
                                         <label for="fullName" text-align="center"> Name on Card: </label>
                                         <br>
-                                        <input type="text" name="firstName" id="firstName" required placeholder="Enter First and Last Name...">
+                                        <input type="text" name="firstName" id="firstName" placeholder="Enter First Name...">
                                     </div>
                                     <div class="form-newUser">
                                         <label for="lastName"> Last Name: </label>
                                         <br>
-                                        <input type="text" name="lastName" id="lastName" required placeholder="Enter Last Name...">
+                                        <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name...">
                                     </div>
                                     <div class="form-checkout">
                                         <label for="credit-card"> Credit card number: </label>
                                         <br>
-                                        <input type="text" class="card-number" required placeholder="Card Number">
+                                        <input type="text" class="card-number" placeholder="Card Number">
                                     </div>
                                     <div class="form-checkout">
                                         <label for="exp-month" text-align="center"> Exp Month: 
@@ -93,7 +96,7 @@
                                     </div>
                                     <div class="col-50">
                                         <label for="cvv">CVV</label>
-                                        <input type="text" id="cvv" name="cvv" required placeholder="XXX">
+                                        <input type="text" id="cvv" name="cvv" placeholder="XXX">
                                     </div>
                                 </div>
                             </div>
@@ -102,32 +105,32 @@
                         <div class="checking-out">
                             <label for="firstName" text-align="center"> First Name: </label>
                             <br>
-                            <input type="text" name="firstName" id="firstName" required placeholder="Enter First Name...">
+                            <input type="text" name="firstName" id="firstName" placeholder="Enter First Name...">
                         </div>
                         <div class="checking-out">
                             <label for="lastName"> Last Name: </label>
                             <br>
-                            <input type="text" name="lastName" id="lastName" required placeholder="Enter Last Name...">
+                            <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name...">
                         </div>
                         <div class="checking-out">
                             <label for="email" text-align="center"> Email: </label>
                             <br>
-                            <input type="text" name="email" id="email" required placeholder="Enter Email...">
+                            <input type="text" name="email" id="email" placeholder="Enter Email...">
                         </div>
                         <div class="checking-out">
                             <label for="address"> Address: </label>
                             <br>
-                            <input type="text" name="address" id="address" required placeholder="0000 street no. 3">
+                            <input type="text" name="address" id="address" placeholder="0000 street no. 3">
                         </div>
                         <div class="checking-out">
                             <label for="city"> City: </label>
                             <br>
-                            <input type="text" name="city" id="city" required placeholder="Enter City">
+                            <input type="text" name="city" id="city" placeholder="Enter City">
                         </div>
                         <div class="checking-out">
                             <label for="state"> State: </label>
                             <br>
-                            <div class="state" required>
+                            <div class="state">
                                 <select name="State">
                                     <option value=" ">Select State</option>
                                     <option value="AL">Alabama</option>
@@ -196,24 +199,9 @@
                     </label>
                     <hr>
                     <div class="final-buttons">
-                        <button type="button" a href="homepage.html" button type="button" class="homepage">Cancel Order</a></button>
-                        <button type="submit" a href="order_suc.html" button type="button" class="confirm">Confirm Order</button>
+                        <a href="order_suc.html" type="button">Confirm Order</a>
                     </div>
                 </form>
-            </div>
-            <div class="col-one">
-                <div class="card-side">
-                    <div class="profile-body">
-                        <h4>Cart</h4>
-                        <p><a href="images/movie/MEGAN.jpg" width="200px" height="300px">M3GAN</a> <span class="price">14.99</span></p>
-                        <p><a href="#">Time: 11:30AM</a></p>
-                        <p>Tickets: <a href="#" id="tickets">3</a></p>
-                        <p><a href="#">Ages per ticket</a> <span class="price">12, 14, 18</span></p>
-                        <input type="button" onClick="totalCost()" Value="Total Cost"/>
-                        <hr>
-                        <p>Total <span id="result"><b>$44.97</b></span></p>
-                    </div>
-                </div>
             </div>
         </div>
         </div>
