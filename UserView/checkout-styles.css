@@ -135,11 +135,11 @@ h4 {
     background-color: white;
 }
 
-button {
+a {
     text-align: center;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 40%;
     background-color: darkred;
     color: white;
     padding: 14px 20px;
@@ -150,17 +150,11 @@ button {
     border-radius: 10px;
 }
 
-button a {
-    text-decoration: none;
-    color: white;
-    background-color: darkred;
-}
-
-button:hover {
+a:hover {
   opacity: 0.8;
 }
 
-button:hover {
+a:hover {
     background-color: tan;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 10px;
